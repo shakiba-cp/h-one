@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+
+
+
+:root {
+   --color-primary: #fc3815;
+   --color-darker-primary: #fb2d09;
+   --color-light-primary: #f6c5bc;
+   --color-secondary: #ecebe9;
+   --color-light-secondary: #f5f5f5;
+   --color-green: #20b75d;
+   --color-ligh-green: #c5f7d9;
+   --color-blue: #31a8ff;
+   --color-blue-light: #eaf6ff;
+   --border-radius: 16px;
+   --body-text-color: #212529;
+   --body-bg-color: #fafafa;
+   --h1-font-size: 30;
+   --h2-font-size: 28;
+   --h3-font-size: 25;
+   --h4-font-size: 22;
+   --h5-font-size: 18;
+   --h6-font-size: 16;
+   --h6-font-size: 13;
+   // --light-color: #f5f5f5;
+   // --border-color: rgba(232, 232, 232, 1);
+   // --yellow-light-color: rgba(255, 241, 204, 1);
+   // --border-light-color: rgba(245, 245, 245, 1);
+   // --muted-color: rgba(149, 149, 149, 1);
+   // --red-color: rgba(255, 78, 78, 1);
+   // --red-light-color: rgba(255, 220, 220, 1);
+   // --lighter-color: rgba(250, 250, 250, 1);
+}
+
+
+body {
+   font-size: var(--h6-font-size);
+   color: var(--body-text-color);
+   font-family: "Kalame";
+   background: var(--body-bg-color);
+   text-align: right;
+}
+
+@font-face {
+   font-family: "Kalame";
+   src: url("../fonts/Kalameh/KalamehWebFaNum-Regular.woff2");
+}
