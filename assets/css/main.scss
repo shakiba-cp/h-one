@@ -29,6 +29,7 @@
    --border-radius: 16px;
    --body-text-color: #212529;
    --body-bg-color: #fafafa;
+<<<<<<< HEAD
    --h1-font-size: 30;
    --h2-font-size: 28;
    --h3-font-size: 25;
@@ -38,6 +39,24 @@
    --h6-font-size: 13;
 
 
+=======
+   --h1-font-size: 30px;
+   --h2-font-size: 28px;
+   --h3-font-size: 25px;
+   --h4-font-size: 22px;
+   --h5-font-size: 18px;
+   --h6-font-size: 16px;
+   --h7-font-size: 13px;
+   --color-gray: #ecebe9;
+   --color-muted: #959595;
+
+   // --border-color: rgba(232, 232, 232, 1);
+   // --yellow-light-color: rgba(255, 241, 204, 1);
+   // --border-light-color: rgba(245, 245, 245, 1);
+   // --red-color: rgba(255, 78, 78, 1);
+   // --red-light-color: rgba(255, 220, 220, 1);
+   // --lighter-color: rgba(250, 250, 250, 1);
+>>>>>>> main
 }
 
 
@@ -52,4 +71,16 @@ body {
 @font-face {
    font-family: "Kalame";
    src: url("../fonts/Kalameh/KalamehWebFaNum-Regular.woff2");
+}
+.card {
+   border: none;
+   border-radius: var(--border-radius);
+   padding:  1.5rem 2rem;
+   @apply bg-white;
+}
+h5{
+   @apply text-h5;
+}
+h4{
+   @apply text-h4;
 }
