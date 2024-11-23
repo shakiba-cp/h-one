@@ -55,7 +55,6 @@
 import { defineComponent } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Navigation, Pagination } from "swiper/modules";
-import { v4 as uuidv4 } from "uuid";
 import type { IProductData } from "@/types/ProductModel";
 
 import "swiper/css";
@@ -78,7 +77,7 @@ export default defineComponent({
   data() {
     return {
       items: this.slides, // Use the `slides` prop directly
-      uniqueId: uuidv4().replace(/[^a-zA-Z0-9]/g, ""), // Generate unique ID
+      uniqueId: useId()
     };
   },
   setup() {
