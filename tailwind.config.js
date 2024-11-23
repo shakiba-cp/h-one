@@ -44,7 +44,7 @@ module.exports = {
         primary: "var(--color-primary)",
         lightPrimary: "var(--color-light-primary)",
         secondary: "var(--color-secondary)",
-        lightSecondary: "var(--color-light-secondary)",
+        lightSecondary: "var(--color-secondary-100)",
         surface: "#FAFAFA",
         muted: "var(--color-muted)",
         default: {
@@ -68,9 +68,12 @@ module.exports = {
         cardBg: "var(--color-card)",
         gray: {
           DEFAULT: "var(--color-gray)",
+          200: "var(--color-gray-200)",
+          500: "var(--color-gray-500)",
+          50: "var(--color-gray-50)",
         },
         bodyBg: "var(--color-gray-50)",
-        "border-color": "var(--colorئ-gray-200)",
+        "border-color": "var(--color-gray-200)",
 
         yellow: {
           DEFAULT: "var(--color-yellow)",
@@ -87,10 +90,10 @@ module.exports = {
         lg: "1.25rem",
       },
       boxShadow: {
-        DEFAULT: "0px 21px 20px 0px rgba(250, 250, 250, 1)",
         md: "0px 12px 20px 0px rgba(48, 35, 30, 0.10)",
         sm: " 7px 8px 31px 0px rgba(20, 62, 101, 0.11)",
       },
+      
       screens: {
         xl: { max: "1536px" },
         lg: { max: "1280px" },

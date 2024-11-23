@@ -1,13 +1,14 @@
 <template>
   <div>
-    <slot />
+    <Header />
+    <main class="w-full mt-5 space-y-5">
+      <slot />
+    </main>
+    <Footer />
+
   </div>
 </template>
 
-<script lang="ts" setup>
+<script lang="ts" setup></script>
 
-</script>
-
-<style>
-
-</style>
+<style></style>
