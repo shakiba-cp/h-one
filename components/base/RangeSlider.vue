@@ -63,6 +63,28 @@ onMounted(() => {
 })
 </script>
 
-<style scoped>
+<style lang="scss">
+.noUi-connect {
+  background: var(--color-primary) !important;
+}
 
+.noUi-horizontal {
+  height: 10px !important;
+}
+
+.noUi-touch-area,
+.noUi-handle {
+  border-radius: 110px !important;
+  background: var(--color-primary);
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+.noUi-handle {
+  width: 20px !important;
+  height: 20px !important;
+  border: none !important;
+  &::before,&::after{
+    content: none !important;
+  }
+}
 </style>

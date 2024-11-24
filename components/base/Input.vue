@@ -170,6 +170,9 @@ onMounted(() => {
 })
 </script>
 <style scoped lang="scss">
+.form-control{
+  @apply bg-secondary;
+}
 .checkbox__wrap {
   display: flex;
   gap: 0.5rem;
