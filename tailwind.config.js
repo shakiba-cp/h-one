@@ -73,7 +73,7 @@ module.exports = {
           50: "var(--color-gray-50)",
         },
         bodyBg: "var(--color-gray-50)",
-        "border-color": "var(--color-gray-200)",
+        borderColor: "var(--border-light-color)",
 
         yellow: {
           DEFAULT: "var(--color-yellow)",
