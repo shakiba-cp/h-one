@@ -111,6 +111,9 @@ watch(showType, () => {
     products.value = array_move(products.value, 0, 3)
   }
 
+});
+definePageMeta({
+  title: "محصولات"
 })
 </script>
 

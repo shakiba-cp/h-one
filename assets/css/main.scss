@@ -53,13 +53,15 @@
 }
 
 body {
-  font-size: var(--h6-font-size);
+  @apply sm:text-h7 text-h6;
   color: var(--body-text-color);
-  font-family: bakhFanum;
+  font-family: "Kalame";
   background: var(--body-bg-color);
   text-align: right;
 }
-
+html,body{
+  overflow-x: hidden;
+}
 * {
   outline: none;
   box-shadow: none;

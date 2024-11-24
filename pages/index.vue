@@ -20,7 +20,9 @@ const products = DATABASE["products"];
 const stories = DATABASE["stories"];
 const banners = DATABASE["banners"];
 const blogs = DATABASE["blogs"];
-
+definePageMeta({
+  title: "صفحه اصلی"
+})
 // console.log(products);
 </script>
 
