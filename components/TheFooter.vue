@@ -50,11 +50,11 @@
                   </p>
                 </div>
                 <div class="col-span-12 pt-2">
-                  <a :href="storeInfo.trustSealLink" target="_blank" referrerpolicy="origin">
+                  <!-- <a :href="storeInfo.trustSealLink" target="_blank" referrerpolicy="origin">
                     <img :src="storeInfo.trustSealLink" alt="نماد اعتماد الکترونیکی" style="cursor: pointer" />
                   </a>
                   <img referrerpolicy="origin" :src="storeInfo.samandehiLogoLink" alt="logo-samandehi"
-                    style="cursor: pointer" @click="openSamandehiLogo" />
+                    style="cursor: pointer" @click="openSamandehiLogo" /> -->
                 </div>
               </div>
             </div>
