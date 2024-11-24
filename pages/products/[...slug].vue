@@ -20,9 +20,18 @@
           <div class="header">
             <p class="title">فصل مناسب</p>
           </div>
-          <div class="flex flex-col gap-4 w-full pb-2">
+          <div class="flex flex-col gap-4 w-full pt-4">
             <BaseCheckBox label="پاییز" name="test" />
             <BaseCheckBox label="زمستان" name="test" />
+          </div>
+        </div>
+        <div class="card">
+          <div class="header">
+            <p class="title">محدوده قیمت</p>
+          </div>
+          <div class="flex flex-col gap-4 w-full pt-4">
+            <BaseRangeSlider style="width: 100%" :min="0" :max="10000000" :step="10000" v-model="data" />
+            {{ data }}
           </div>
         </div>
       </aside>
@@ -32,7 +41,7 @@
 </template>
 
 <script lang="ts" setup>
-
+const data = ref(["0", "10000000"])
 </script>
 
 <style></style>

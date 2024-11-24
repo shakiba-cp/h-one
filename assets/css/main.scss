@@ -1030,41 +1030,7 @@ h4 {
   background: transparent;
 }
 
-.noUi-connect {
-  background: var(--primary-color);
-}
 
-.noUi-txt-dir-rtl.noUi-horizontal .noUi-handle {
-  border: none;
-  border-radius: 50%;
-  background: var(--primary-color);
-  width: 22px;
-  height: 22px;
-  box-shadow: none;
-}
-
-.noUi-txt-dir-rtl.noUi-horizontal .noUi-handle::before,
-.noUi-txt-dir-rtl.noUi-horizontal .noUi-handle::after {
-  display: none;
-}
-
-.noUi-horizontal {
-  height: 8px;
-  border: none;
-  background: var(--lighter-color);
-}
-
-.noUi-horizontal .noUi-handle {
-  top: -7px;
-}
-
-.noUi-target {
-  box-shadow: none;
-}
-
-.noUi-handle.noUi-handle-lower {
-  left: 0 !important;
-}
 
 .fs-7 {
   font-size: 0.9rem !important;
