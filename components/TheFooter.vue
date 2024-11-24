@@ -6,28 +6,16 @@
           <!-- Left Column -->
           <div class="col-span-7">
             <div class="grid grid-cols-12">
-              <div
-                class="col-span-4"
-                v-for="(section, index) in footerSections"
-                :key="index"
-              >
+              <div class="col-span-4" v-for="(section, index) in footerSections" :key="index">
                 <div class="footer-widget" data-collapsible>
                   <div class="flex flex-row items-center" data-collapsible-header>
                     <strong>{{ section.title }}</strong>
-                    <img
-                      src="https://ibolak.com/assets/icons/arrow-left-simple.svg"
-                      alt="Arrow left icon"
-                      class="mobile-only"
-                    />
+                    <img src="https://ibolak.com/assets/icons/arrow-left-simple.svg" alt="Arrow left icon"
+                      class="mobile-only" />
                   </div>
                   <ul data-collapsible-body>
                     <li v-for="(link, idx) in section.links" :key="idx">
-                      <a
-                        :href="link.url"
-                        :title="link.title"
-                        target="_self"
-                        class="dots-vertical"
-                      >
+                      <a :href="link.url" :title="link.title" target="_self" class="dots-vertical">
                         <span class="dots-vertical-dots"></span>
                         <span class="dots-vertical-dots"></span>
                         <span class="dots-vertical-dots"></span>
@@ -51,12 +39,8 @@
                 <div class="col-span-12">
                   <p>
                     <b>آدرس ایمیل: </b>
-                    <a
-                      :href="'mailto:' + storeInfo.email"
-                      :title="'ارسال ایمیل به ' + storeInfo.title"
-                      target="_self"
-                      >{{ storeInfo.email }}</a
-                    >
+                    <a :href="'mailto:' + storeInfo.email" :title="'ارسال ایمیل به ' + storeInfo.title"
+                      target="_self">{{ storeInfo.email }}</a>
                   </p>
                   <p>
                     <b>شماره‌های تماس: </b>
@@ -66,24 +50,11 @@
                   </p>
                 </div>
                 <div class="col-span-12 pt-2">
-                  <a
-                    :href="storeInfo.trustSealLink"
-                    target="_blank"
-                    referrerpolicy="origin"
-                  >
-                    <img
-                      :src="storeInfo.trustSealLink"
-                      alt="نماد اعتماد الکترونیکی"
-                      style="cursor: pointer"
-                    />
+                  <a :href="storeInfo.trustSealLink" target="_blank" referrerpolicy="origin">
+                    <img :src="storeInfo.trustSealLink" alt="نماد اعتماد الکترونیکی" style="cursor: pointer" />
                   </a>
-                  <img
-                    referrerpolicy="origin"
-                    :src="storeInfo.samandehiLogoLink"
-                    alt="logo-samandehi"
-                    style="cursor: pointer"
-                    @click="openSamandehiLogo"
-                  />
+                  <img referrerpolicy="origin" :src="storeInfo.samandehiLogoLink" alt="logo-samandehi"
+                    style="cursor: pointer" @click="openSamandehiLogo" />
                 </div>
               </div>
             </div>
@@ -104,7 +75,6 @@
 
 <script setup>
 import { ref } from "vue";
-
 // Import data from DATABASE.json
 import footerData from "@/assets/DATABASE.json";
 
@@ -135,7 +105,7 @@ const openSamandehiLogo = () => {
 }
 
 .copyright {
-  background-color: #e8e8e8;
+  background-color: rgba(245, 245, 245, 1);
   padding: 1rem 0;
   text-align: center;
 }

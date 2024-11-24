@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="bg-white">
     <teleport to="body">
       <div v-if="SearchState" class="backdrop"></div>
     </teleport>

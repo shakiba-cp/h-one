@@ -1,11 +1,10 @@
 <template>
   <div>
-    <Header />
+    <TheHeader />
     <main class="w-full mt-5 space-y-5">
       <slot />
     </main>
-    <Footer />
-
+    <TheFooter />
   </div>
 </template>
 
