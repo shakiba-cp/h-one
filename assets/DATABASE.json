@@ -123,27 +123,27 @@
         "links": [
           {
             "text": "صفحه اصلی",
-            "url": "https://ibolak.com/",
+            "url": "/",
             "title": ""
           },
           {
             "text": "پیگیری شکایات",
-            "url": "https://ibolak.com/page/customer-support",
+            "url": "/customer-support",
             "title": ""
           },
           {
             "text": "شرایط مرجوعی",
-            "url": "https://ibolak.com/page/reference-and-replacement-conditions",
+            "url": "/reference-and-replacement-conditions",
             "title": ""
           },
           {
             "text": "تماس با ما",
-            "url": "https://ibolak.com/contact",
+            "url": "/contact",
             "title": ""
           },
           {
             "text": "درباره ما",
-            "url": "https://ibolak.com/page/about",
+            "url": "/about",
             "title": ""
           }
         ]
@@ -188,7 +188,7 @@
       "samandehiLogoLink": "https://logo.samandehi.ir/logo.aspx?id=211878&amp;p=odrfnbpdnbpdaqgwyndtaqgw"
     }
   },
-"products": [
+  "products": [
     {
       "id": 1,
       "imageSrc": "/storage/image/2023/12/optimized/1701679806-BNeCCNchy8CVDyjU.JPG",
@@ -341,7 +341,6 @@
       "category": "پوشاک",
       "parentCategory": "مردانه"
     }
-    
   ],
   "stories": [
     {
@@ -400,23 +399,19 @@
   "banners": [
     {
       "id": 1,
-      "imageSrc": "/storage/image/2023/12/optimized/1701679806-BNeCCNchy8CVDyjU.JPG"
+      "imageSrc": "/images/banners/1.webp"
     },
     {
       "id": 2,
-      "imageSrc": "/storage/image/2023/12/optimized/1701679806-BNeCCNchy8CVDyjU.JPG"
+      "imageSrc": "/images/banners/2.webp"
     },
     {
       "id": 3,
-      "imageSrc": "/storage/image/2023/12/optimized/1701679806-BNeCCNchy8CVDyjU.JPG"
+      "imageSrc": "/images/banners/3.webp"
     },
     {
       "id": 4,
-      "imageSrc": "/storage/image/2023/12/optimized/1701679806-BNeCCNchy8CVDyjU.JPG"
-    },
-    {
-      "id": 5,
-      "imageSrc": "/storage/image/2023/12/optimized/1701679806-BNeCCNchy8CVDyjU.JPG"
+      "imageSrc": "/images/banners/4.webp"
     }
   ],
   "blogs": [

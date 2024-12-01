@@ -159,6 +159,11 @@ const {
     background: var(--color-darker-primary) !important;
   }
 
+  &.btn-outline {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
   &.soft {
     background: var(--color-primary-100);
     color: var(--color-primary);
@@ -177,10 +182,10 @@ const {
   }
 
   &.btn-outline {
-    @apply border border-[--dark-color] text-[#212529];
+    @apply border border-darkSecondary;
 
     &:hover {
-      @apply bg-[#6c757d] text-white;
+      @apply text-white;
     }
   }
 
@@ -230,11 +235,6 @@ const {
   background: transparent;
   @apply border-muted;
 
-  &.btn-primary {
-    border-color: var(--primary-color);
-    color: var(--primary-color);
-  }
-
   &.btn-gray {
     border-color: #e5ebf6;
   }
@@ -255,7 +255,7 @@ const {
   }
 
   &:hover {
-    opacity: 0.5;
+    opacity: 0.8;
   }
 }
 

@@ -1,90 +1,55 @@
 <template>
-  <div class="flex flex-col gap-5" v-show="items.length > 0">
-    <div class="products-section-header flex justify-between items-stretch">
-      <div class="products-section-header-right flex items-center">
-        <img src="https://ibolak.com/assets/icons/dots.svg" alt="Dots before" />
-        <h3 class="mr-5 text-[27px]">
+  <div class="flex flex-col gap-5 my-12" v-if="items.length > 0">
+    <div class="flex justify-between items-stretch">
+      <div class="flex gap-5 sm:gap-3 items-center">
+        <IconsDots class="sm:w-[28px]"/>
+        <h3 class=" text-h3 md:text-h4">
           {{ sectionTitle }}
         </h3>
       </div>
-      <BaseButton :outline="true" color="secondary"> مشاهده همه </BaseButton>
+      <BaseButton class="sm:border-none sm:!p-0 sm:!text-primary" :outline="true" color="secondary"> مشاهده همه </BaseButton>
     </div>
-    <div class="relative">
-      <client-only>
-        <swiper
-          :slides-per-view="6"
-          :space-between="10"
-          :modules="modules"
-          :navigation="{
-            enabled: true,
-            prevEl: `#swiper-${uniqueId}-prev`,
-            nextEl: `#swiper-${uniqueId}-next`,
-          }"
-          pagination
-        >
-          <swiper-slide v-for="(item, index) in items" :key="index" class="px-3">
-            <ProductCard
-              :imageSrc="item.imageSrc"
-              :title="item.title"
-              :price="item.price"
-              :discountPercent="item.discountPercent"
-              :category="item.category"
-              :parent-category="item.parentCategory"
-              :image-gallery="item.imageGallery"
-            />
-          </swiper-slide>
-        </swiper>
-        <span
-          :id="`swiper-${uniqueId}-prev`"
-          class="swiper-button-prev custom-swiper-button-prev flex items-center justify-center"
-        >
-          <img src="/icons/gallery-arrow-right.svg" alt="Previous" />
-        </span>
-        <span
-          :id="`swiper-${uniqueId}-next`"
-          class="swiper-button-next custom-swiper-button-next flex items-center justify-center"
-        >
-          <img src="/icons/gallery-arrow-left.svg" alt="Next" />
-        </span>
-      </client-only>
+    <div class="relative sm:w-[109%] sm:-right-[4.1%] sm:px-r">
+      <BaseCarousel :breakpoints="breakpoints" :items="items" :space-between="10" :modules="[SwiperNavigation]"
+        :navigation="{
+          enabled: true,
+        }">
+        <template #item="{ item }">
+          <ProductCard :imageSrc="item.imageSrc" :title="item.title" :price="item.price"
+            :discountPercent="item.discountPercent" :category="item.category" :parent-category="item.parentCategory"
+            :image-gallery="item.imageGallery" />
+        </template>
+      </BaseCarousel>
     </div>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-import { Swiper, SwiperSlide } from "swiper/vue";
-import { Navigation, Pagination } from "swiper/modules";
+<script lang="ts" setup>
 import type { IProductData } from "@/types/ProductModel";
-
-import "swiper/css";
-
-export default defineComponent({
-  components: {
-    Swiper,
-    SwiperSlide,
+const breakpoints = ref({
+  1200: {
+    slidesPerView: 6,
   },
-  props: {
-    sectionTitle: {
-      type: String,
-      default: "",
-    },
-    slides: {
-      type: Array as () => IProductData[], // Proper TypeScript typing for props
-      default: () => [],
-    },
+  1090: {
+    slidesPerView: 5,
   },
-  data() {
-    return {
-      items: this.slides, // Use the `slides` prop directly
-      uniqueId: useId()
-    };
+  768: {
+    slidesPerView: 4,
   },
-  setup() {
-    const modules = [Navigation, Pagination];
-    return {
-      modules,
-    };
+  576: {
+    slidesPerView: 3.5,
+  },
+  480: {
+    slidesPerView: 3.5,
+  },
+  0: {
+    slidesPerView: 2.1,
   },
 });
+const { sectionTitle, slides } = defineProps<{
+  sectionTitle: string;
+  slides: []
+}>();
+
+const items = slides;
 </script>

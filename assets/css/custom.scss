@@ -1,5 +1,7 @@
 .black-f {
-  .text-blue,.section-title {
+
+  .text-blue,
+  .section-title {
     color: #F61407 !important;
   }
 }
@@ -210,5 +212,21 @@ html.dark {
     font-size: var(--h5-font-size);
     margin-top: 2rem;
     margin-bottom: .5rem;
+  }
+}
+
+
+main {
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    @apply bg-white text-black shadow rounded-full w-[50px] h-[50px] sm:w-[35px] sm:h-[35px];
+    transform: translateY(10%);
+
+    &:after {
+      @apply sm:!text-[12px] !font-normal;
+      font-size: 20px;
+      font-weight: bold;
+    }
   }
 }

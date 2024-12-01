@@ -1,63 +1,45 @@
 <template>
   <footer>
-    <div class="footer">
-      <div class="container">
-        <div class="grid grid-cols-12">
-          <!-- Left Column -->
-          <div class="col-span-7">
-            <div class="grid grid-cols-12">
-              <div class="col-span-4" v-for="(section, index) in footerSections" :key="index">
-                <div class="footer-widget" data-collapsible>
-                  <div class="flex flex-row items-center" data-collapsible-header>
-                    <strong>{{ section.title }}</strong>
-                    <img src="https://ibolak.com/assets/icons/arrow-left-simple.svg" alt="Arrow left icon"
-                      class="mobile-only" />
-                  </div>
-                  <ul data-collapsible-body>
-                    <li v-for="(link, idx) in section.links" :key="idx">
-                      <a :href="link.url" :title="link.title" target="_self" class="dots-vertical">
-                        <span class="dots-vertical-dots"></span>
-                        <span class="dots-vertical-dots"></span>
-                        <span class="dots-vertical-dots"></span>
-                        {{ link.text }}
-                      </a>
-                    </li>
-                  </ul>
+    <div class="container">
+      <div class="grid grid-cols-12">
+        <!-- Left Column -->
+        <div class="col-span-7 sm:col-span-12">
+          <div class="flex gap-24 sm:gap-4 sm:flex-wrap sm:justify-between">
+            <div class="col-span-4" v-for="(section, index) in footerSections" :key="index">
+              <div class="footer-widget">
+                <div class="flex flex-row items-center">
+                  <strong>{{ section.title }}</strong>
                 </div>
+                <ul>
+                  <li v-for="(link, idx) in section.links" :key="idx">
+                    <nuxt-link :to="link.url" :title="link.title">
+                      {{ link.text }}
+                    </nuxt-link>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
-          <!-- Right Column -->
-          <div class="col-span-5">
-            <div class="footer-widget">
-              <strong>{{ storeInfo.title }}</strong>
-              <p>
-                <b>آدرس فروشگاه:</b>
-                {{ storeInfo.address }}
-              </p>
-              <div class="grid grid-cols-12">
-                <div class="col-span-12">
-                  <p>
-                    <b>آدرس ایمیل: </b>
-                    <a :href="'mailto:' + storeInfo.email" :title="'ارسال ایمیل به ' + storeInfo.title"
-                      target="_self">{{ storeInfo.email }}</a>
-                  </p>
-                  <p>
-                    <b>شماره‌های تماس: </b>
-                    <a dir="ltr" :href="'tel:' + storeInfo.phone" target="_self">
-                      {{ storeInfo.phone }}
-                    </a>
-                  </p>
-                </div>
-                <div class="col-span-12 pt-2">
-                  <!-- <a :href="storeInfo.trustSealLink" target="_blank" referrerpolicy="origin">
-                    <img :src="storeInfo.trustSealLink" alt="نماد اعتماد الکترونیکی" style="cursor: pointer" />
-                  </a>
-                  <img referrerpolicy="origin" :src="storeInfo.samandehiLogoLink" alt="logo-samandehi"
-                    style="cursor: pointer" @click="openSamandehiLogo" /> -->
-                </div>
-              </div>
-            </div>
+        </div>
+        <!-- Right Column -->
+        <div class="col-span-5 sm:col-span-12">
+          <div class="footer-widget flex flex-col gap-3">
+            <p class="font-bold text-h5">{{ storeInfo.title }}</p>
+            <p>
+              <b>آدرس فروشگاه:</b>
+              {{ storeInfo.address }}
+            </p>
+            <p>
+              <b>آدرس ایمیل: </b>
+              <a :href="'mailto:' + storeInfo.email" :title="'ارسال ایمیل به ' + storeInfo.title" target="_self">{{
+                storeInfo.email }}</a>
+            </p>
+            <p>
+              <b>شماره‌های تماس: </b>
+              <a dir="ltr" :href="'tel:' + storeInfo.phone" target="_self">
+                {{ storeInfo.phone }}
+              </a>
+            </p>
           </div>
         </div>
       </div>
@@ -95,28 +77,32 @@ const openSamandehiLogo = () => {
 </script>
 
 <style scoped>
-.footer {
-  padding: 2rem 0;
-  background-color: #f8f8f8;
+footer {
+  @apply border-t border-borderColor mt-12;
+  padding-top: 2.5rem;
 }
 
-.footer-widget {
-  margin-bottom: 1.5rem;
+.footer-widget ul {
+  list-style: none;
+  padding: 0;
+  padding-right: 1rem;
+}
+
+.footer-widget li {
+  margin: 0.5rem 0;
+  padding: 0.5rem 0;
+}
+
+.footer-widget>strong {
+  font-size: 1.1rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 1rem;
 }
 
 .copyright {
-  background-color: rgba(245, 245, 245, 1);
+  background: rgba(245, 245, 245, 1);
   padding: 1rem 0;
-  text-align: center;
-}
-
-.dots-vertical-dots {
-  display: inline-block;
-  margin-right: 0.25rem;
-}
-
-.dots-vertical {
-  display: flex;
-  align-items: center;
+  margin-top: 2rem;
 }
 </style>

@@ -1,17 +1,19 @@
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   routeRules: {
-    "/panel":{ssr:false},
-    "/panel/**":{ssr:false},
-    "/panel/**/**":{ssr:false},
-
+    "/panel": { ssr: false },
+    "/panel/**": { ssr: false },
+    "/panel/**/**": { ssr: false },
   },
   compatibilityDate: "2024-04-03",
   devtools: { enabled: false },
-  css: ["~/assets/css/main.scss"],
-  modules: ["@formkit/auto-animate/nuxt"],
+  css: ["~/assets/css/main.scss", "~/assets/css/custom.scss"],
+  modules: ["@formkit/auto-animate/nuxt", "nuxt-swiper"],
   app: {
+    pageTransition: {
+      name: "page",
+      mode: "out-in",
+    },
     head: {
       htmlAttrs: {
         dir: "rtl",

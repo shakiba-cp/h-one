@@ -8,9 +8,9 @@ defineProps({
 </script>
 
 <template>
-  <div class="grid grid-cols-4 gap-4">
-    <div v-for="(banner, index) in banners" :key="index" class="banner">
+  <div class="grid grid-cols-4 gap-4 ">
+    <nuxt-link to="/products" v-for="(banner, index) in banners" :key="index" class="banner">
       <img :src="banner.imageSrc" :alt="`Banner ${index + 1}`" />
-    </div>
+    </nuxt-link>
   </div>
 </template>

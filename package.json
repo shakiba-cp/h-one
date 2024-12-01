@@ -14,7 +14,7 @@
     "@persian-tools/persian-tools": "^3.5.2",
     "nouislider": "^15.8.1",
     "nuxt": "^3.14.159",
-    "nuxt-swiper": "^2.0.0",
+    "nuxt-swiper": "1.2.2",
     "vee-validate": "^4.14.7",
     "vue": "latest",
     "vue-router": "latest",

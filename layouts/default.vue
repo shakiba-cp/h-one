@@ -1,7 +1,7 @@
 <template>
   <div>
     <TheHeader />
-    <main class="w-full mt-5 space-y-5">
+    <main class="w-full  space-y-5">
       <slot />
     </main>
     <TheFooter />
