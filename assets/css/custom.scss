@@ -230,3 +230,64 @@ main {
     }
   }
 }
+
+.h__toast {
+  @apply  dark:bg-secondary dark:text-bodyText;
+  box-shadow: 0px 10px 36px rgba(15, 15, 16, 0.2) !important;
+  background: white !important;
+  color: black !important;
+  border-radius: 14px !important;
+  padding: 0 0 0 1.5rem !important;
+  min-width: 400px !important;
+  max-width: 100% !important;
+
+}
+
+.Vue-Toastification__toast-body {
+  padding: 1.5rem 1rem;
+  font-family: var(--h2-font-family);
+}
+
+.Vue-Toastification__progress-bar {
+  background: #F0EFEF !important;
+  width: 94% !important;
+  right: unset !important;
+  left: -68px !important;
+}
+
+.toast__icon {
+  height: unset !important;
+  width: 88px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: unset !important;
+}
+
+.Vue-Toastification__toast--rtl {
+  margin-left: auto !important;
+  margin-right: unset !important;
+}
+
+.Vue-Toastification__toast {
+  font-size: var(--h6-font-size) !important;
+}
+
+.Vue-Toastification__container {
+  z-index: 9999999 !important;
+}
+@media screen and (max-width:768px) {
+  div.h__toast {
+      margin: 30px auto !important;
+      width: 85% !important;
+      display: flex;
+      min-width: unset !important;
+      min-height: 72px !important;
+      margin-bottom: 0 !important;
+  }
+
+  .Vue-Toastification__toast-body {
+      padding: 1.5rem 12px !important;
+      font-size: var(--h7-font-size) !important;
+  }
+}

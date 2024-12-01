@@ -9,9 +9,16 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   css: ["~/assets/css/main.scss", "~/assets/css/custom.scss"],
   modules: ["@formkit/auto-animate/nuxt", "nuxt-swiper"],
+  build: {
+    transpile: ["vue-toastification"],
+  },
   app: {
     pageTransition: {
       name: "page",
+      mode: "out-in",
+    },
+    layoutTransition: {
+      name: "layout",
       mode: "out-in",
     },
     head: {
