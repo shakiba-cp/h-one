@@ -1,0 +1,452 @@
+{
+  "headerCategories": [
+    {
+      "id": 1,
+      "title": "زنانه",
+      "parentId": null,
+      "childs": [
+        {
+          "id": 2,
+          "title": "لباس",
+          "parentId": 1,
+          "childs": [
+            {
+              "id": 6,
+              "title": "پیراهن",
+              "parentId": 2,
+              "childs": []
+            },
+            {
+              "id": 7,
+              "title": "شلوار",
+              "parentId": 2,
+              "childs": []
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "title": "کفش",
+          "parentId": 1,
+          "childs": [
+            {
+              "id": 8,
+              "title": "کفش رسمی",
+              "parentId": 3,
+              "childs": []
+            },
+            {
+              "id": 9,
+              "title": "کفش اسپرت",
+              "parentId": 3,
+              "childs": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "مردانه",
+      "parentId": null,
+      "childs": []
+    },
+    {
+      "id": 12,
+      "title": "بچگانه",
+      "parentId": null,
+      "childs": [
+        {
+          "id": 13,
+          "title": "لباس بچگانه",
+          "parentId": 12,
+          "childs": [
+            {
+              "id": 14,
+              "title": "پیراهن دخترانه",
+              "parentId": 13,
+              "childs": []
+            },
+            {
+              "id": 15,
+              "title": "شلوارک",
+              "parentId": 13,
+              "childs": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "title": "عطر و ادکلن",
+      "parentId": null,
+      "childs": [
+        {
+          "id": 17,
+          "title": "عطر زنانه",
+          "parentId": 16,
+          "childs": []
+        },
+        {
+          "id": 18,
+          "title": "عطر مردانه",
+          "parentId": 16,
+          "childs": []
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "title": "شال و روسری",
+      "parentId": null,
+      "childs": [
+        {
+          "id": 20,
+          "title": "شال",
+          "parentId": 19,
+          "childs": []
+        },
+        {
+          "id": 21,
+          "title": "روسری",
+          "parentId": 19,
+          "childs": []
+        }
+      ]
+    }
+  ],
+  "footer": {
+    "footerSections": [
+      {
+        "title": "دسترسی سریع",
+        "links": [
+          {
+            "text": "صفحه اصلی",
+            "url": "https://ibolak.com/",
+            "title": ""
+          },
+          {
+            "text": "پیگیری شکایات",
+            "url": "https://ibolak.com/page/customer-support",
+            "title": ""
+          },
+          {
+            "text": "شرایط مرجوعی",
+            "url": "https://ibolak.com/page/reference-and-replacement-conditions",
+            "title": ""
+          },
+          {
+            "text": "تماس با ما",
+            "url": "https://ibolak.com/contact",
+            "title": ""
+          },
+          {
+            "text": "درباره ما",
+            "url": "https://ibolak.com/page/about",
+            "title": ""
+          }
+        ]
+      },
+      {
+        "title": "دسته‌بندی‌ها",
+        "links": [
+          {
+            "text": "سوالات متداول",
+            "url": "https://ibolak.com/faq",
+            "title": ""
+          },
+          {
+            "text": "قوانین",
+            "url": "https://ibolak.com/page/rules",
+            "title": ""
+          },
+          {
+            "text": "مردانه",
+            "url": "https://ibolak.com/shop/categories/ker1b/man",
+            "title": ""
+          },
+          {
+            "text": "زنانه",
+            "url": "https://ibolak.com/shop/categories/jbqkb/لباس-زنانه",
+            "title": ""
+          },
+          {
+            "text": "کودکانه",
+            "url": "https://ibolak.com/shop/categories/pdv6b/kids",
+            "title": ""
+          }
+        ]
+      }
+    ],
+    "storeInfo": {
+      "title": "فروشگاه اینترنتی پوشاک آی‌بولک",
+      "address": "گرگان، بلوار ناهارخوران، بالاتر از عدالت ۵۶، نرسیده به میدان گلشهر، فروشگاه آی‌بولک",
+      "email": "info@ibolak.com",
+      "phone": "01732534106-9",
+      "trustSealLink": "https://trustseal.enamad.ir/?id=142490&amp;Code=Zjn4ngVF9uVoACxtfycY",
+      "samandehiLogoLink": "https://logo.samandehi.ir/logo.aspx?id=211878&amp;p=odrfnbpdnbpdaqgwyndtaqgw"
+    }
+  },
+"products": [
+    {
+      "id": 1,
+      "imageSrc": "/storage/image/2023/12/optimized/1701679806-BNeCCNchy8CVDyjU.JPG",
+      "imageGallery": [
+        {
+          "imageSrc": "/storage/image/2023/12/optimized/1701679806-BNeCCNchy8CVDyjU.JPG",
+          "imageAlt": "نمای جانبی"
+        },
+        {
+          "imageSrc": "/storage/image/2023/12/optimized/1701679806-BNeCCNchy8CVDyjU.JPG",
+          "imageAlt": "نمای پشت"
+        }
+      ],
+      "title": "رکابی مردانه",
+      "price": 199000,
+      "discountPercent": 15,
+      "category": "پوشاک",
+      "parentCategory": "مردانه"
+    },
+    {
+      "id": 2,
+      "imageSrc": "/storage/image/2023/12/optimized/1701679806-BNeCCNchy8CVDyjU.JPG",
+      "imageGallery": [
+        {
+          "imageSrc": "/storage/image/2023/12/optimized/1701679806-BNeCCNchy8CVDyjU.JPG",
+          "imageAlt": "نمای جانبی"
+        },
+        {
+          "imageSrc": "/storage/image/2023/12/optimized/1701679806-BNeCCNchy8CVDyjU.JPG",
+          "imageAlt": "نمای پشت"
+        }
+      ],
+      "title": "رکابی مردانه",
+      "price": 199000,
+      "discountPercent": 15,
+      "category": "پوشاک",
+      "parentCategory": "مردانه"
+    },
+    {
+      "id": 3,
+      "imageSrc": "/storage/image/2023/12/optimized/1701679806-BNeCCNchy8CVDyjU.JPG",
+      "imageGallery": [
+        {
+          "imageSrc": "/storage/image/2023/12/optimized/1701679806-BNeCCNchy8CVDyjU.JPG",
+          "imageAlt": "نمای جانبی"
+        },
+        {
+          "imageSrc": "/storage/image/2023/12/optimized/1701679806-BNeCCNchy8CVDyjU.JPG",
+          "imageAlt": "نمای پشت"
+        }
+      ],
+      "title": "رکابی مردانه",
+      "price": 199000,
+      "discountPercent": 15,
+      "category": "پوشاک",
+      "parentCategory": "مردانه"
+    },
+    {
+      "id": 4,
+      "imageSrc": "/storage/image/2023/12/optimized/1701679806-BNeCCNchy8CVDyjU.JPG",
+      "imageGallery": [
+        {
+          "imageSrc": "/storage/image/2023/12/optimized/1701679806-BNeCCNchy8CVDyjU.JPG",
+          "imageAlt": "نمای جانبی"
+        },
+        {
+          "imageSrc": "/storage/image/2023/12/optimized/1701679806-BNeCCNchy8CVDyjU.JPG",
+          "imageAlt": "نمای پشت"
+        }
+      ],
+      "title": "رکابی مردانه",
+      "price": 199000,
+      "discountPercent": 15,
+      "category": "پوشاک",
+      "parentCategory": "مردانه"
+    },
+    {
+      "id": 5,
+      "imageSrc": "/storage/image/2023/12/optimized/1701679806-BNeCCNchy8CVDyjU.JPG",
+      "imageGallery": [
+        {
+          "imageSrc": "/storage/image/2023/12/optimized/1701679806-BNeCCNchy8CVDyjU.JPG",
+          "imageAlt": "نمای جانبی"
+        },
+        {
+          "imageSrc": "/storage/image/2023/12/optimized/1701679806-BNeCCNchy8CVDyjU.JPG",
+          "imageAlt": "نمای پشت"
+        }
+      ],
+      "title": "رکابی مردانه",
+      "price": 199000,
+      "discountPercent": 15,
+      "category": "پوشاک",
+      "parentCategory": "مردانه"
+    },
+    {
+      "id": 6,
+      "imageSrc": "/storage/image/2023/12/optimized/1701679806-BNeCCNchy8CVDyjU.JPG",
+      "imageGallery": [
+        {
+          "imageSrc": "/storage/image/2023/12/optimized/1701679806-BNeCCNchy8CVDyjU.JPG",
+          "imageAlt": "نمای جانبی"
+        },
+        {
+          "imageSrc": "/storage/image/2023/12/optimized/1701679806-BNeCCNchy8CVDyjU.JPG",
+          "imageAlt": "نمای پشت"
+        }
+      ],
+      "title": "رکابی مردانه",
+      "price": 199000,
+      "discountPercent": 15,
+      "category": "پوشاک",
+      "parentCategory": "مردانه"
+    },
+    {
+      "id": 7,
+      "imageSrc": "/storage/image/2023/12/optimized/1701679806-BNeCCNchy8CVDyjU.JPG",
+      "imageGallery": [
+        {
+          "imageSrc": "/storage/image/2023/12/optimized/1701679806-BNeCCNchy8CVDyjU.JPG",
+          "imageAlt": "نمای جانبی"
+        },
+        {
+          "imageSrc": "/storage/image/2023/12/optimized/1701679806-BNeCCNchy8CVDyjU.JPG",
+          "imageAlt": "نمای پشت"
+        }
+      ],
+      "title": "رکابی مردانه",
+      "price": 199000,
+      "discountPercent": 15,
+      "category": "پوشاک",
+      "parentCategory": "مردانه"
+    },
+    {
+      "id": 8,
+      "imageSrc": "/storage/image/2023/12/optimized/1701679806-BNeCCNchy8CVDyjU.JPG",
+      "imageGallery": [
+        {
+          "imageSrc": "/storage/image/2023/12/optimized/1701679806-BNeCCNchy8CVDyjU.JPG",
+          "imageAlt": "نمای جانبی"
+        },
+        {
+          "imageSrc": "/storage/image/2023/12/optimized/1701679806-BNeCCNchy8CVDyjU.JPG",
+          "imageAlt": "نمای پشت"
+        }
+      ],
+      "title": "رکابی مردانه",
+      "price": 199000,
+      "discountPercent": 15,
+      "category": "پوشاک",
+      "parentCategory": "مردانه"
+    }
+    
+  ],
+  "stories": [
+    {
+      "id": 1,
+      "href": "https://ibolak.com/link/redirect/eq8ke",
+      "title": "خرید اقساطی آی بولک",
+      "target": "_self",
+      "dataToggle": "modal",
+      "dataType": "video/mp4",
+      "dataSrc": "https://ibolak.com/storage/video/2024/11/1732001637-qBCZxM70JBPU67U3.MP4",
+      "dataUrl": "https://ibolak.com/link/redirect/eq8ke",
+      "dataTarget": "#storyModal",
+      "imageSrc": "https://ibolak.com/storage/image/2024/11/optimized/1732001657-eZeq231Di94pI6qW.webp",
+      "text": "از آی بولک قسطی بخر"
+    },
+    {
+      "id": 2,
+      "href": "https://ibolak.com/link/redirect/vk9xj",
+      "title": "تخفیف‌های ویژه آی بولک",
+      "target": "_self",
+      "dataToggle": "modal",
+      "dataType": "video/mp4",
+      "dataSrc": "https://ibolak.com/storage/video/2024/11/1732001637-qBCZxM70JBPU67U3.MP4",
+      "dataUrl": "https://ibolak.com/link/redirect/vk9xj",
+      "dataTarget": "#storyModal",
+      "imageSrc": "https://ibolak.com/storage/image/2024/11/optimized/1732001657-eZeq231Di94pI6qW.webp",
+      "text": "تخفیف‌های ویژه آی بولک"
+    },
+    {
+      "id": 3,
+      "href": "https://ibolak.com/link/redirect/dz1ac",
+      "title": "محصولات جدید آی بولک",
+      "target": "_self",
+      "dataToggle": "modal",
+      "dataType": "video/mp4",
+      "dataSrc": "https://ibolak.com/storage/video/2024/11/1732001637-qBCZxM70JBPU67U3.MP4",
+      "dataUrl": "https://ibolak.com/link/redirect/dz1ac",
+      "dataTarget": "#storyModal",
+      "imageSrc": "https://ibolak.com/storage/image/2024/11/optimized/1732001657-eZeq231Di94pI6qW.webp",
+      "text": "محصولات جدید آی بولک"
+    },
+    {
+      "id": 4,
+      "href": "https://ibolak.com/link/redirect/xo4bg",
+      "title": "مزایای خرید از آی بولک",
+      "target": "_self",
+      "dataToggle": "modal",
+      "dataType": "video/mp4",
+      "dataSrc": "https://ibolak.com/storage/video/2024/11/1732001637-qBCZxM70JBPU67U3.MP4",
+      "dataUrl": "https://ibolak.com/link/redirect/xo4bg",
+      "dataTarget": "#storyModal",
+      "imageSrc": "https://ibolak.com/storage/image/2024/11/optimized/1732001657-eZeq231Di94pI6qW.webp",
+      "text": "مزایای خرید از آی بولک"
+    }
+  ],
+  "banners": [
+    {
+      "id": 1,
+      "imageSrc": "/storage/image/2023/12/optimized/1701679806-BNeCCNchy8CVDyjU.JPG"
+    },
+    {
+      "id": 2,
+      "imageSrc": "/storage/image/2023/12/optimized/1701679806-BNeCCNchy8CVDyjU.JPG"
+    },
+    {
+      "id": 3,
+      "imageSrc": "/storage/image/2023/12/optimized/1701679806-BNeCCNchy8CVDyjU.JPG"
+    },
+    {
+      "id": 4,
+      "imageSrc": "/storage/image/2023/12/optimized/1701679806-BNeCCNchy8CVDyjU.JPG"
+    },
+    {
+      "id": 5,
+      "imageSrc": "/storage/image/2023/12/optimized/1701679806-BNeCCNchy8CVDyjU.JPG"
+    }
+  ],
+  "blogs": [
+    {
+      "imageSrc": "/storage/image/2022/7/thumbnail/1656927277-Rx4xPVvpHUDH7q28.jpg",
+      "title": "چگونه شلوار را بشوییم تا همیشه نو به نظر برسد؟",
+      "date": "30 آبان 1403",
+      "category": "مد و استایل",
+      "link": "https://ibolak.com/article/emqmy"
+    },
+    {
+      "imageSrc": "/storage/image/2022/7/thumbnail/1656927277-Rx4xPVvpHUDH7q28.jpg",
+      "title": "استایل اولد مانی ( Old Money ) چیست؟",
+      "date": "29 آبان 1403",
+      "category": "مد و استایل",
+      "link": "https://ibolak.com/article/bl8lw"
+    },
+    {
+      "imageSrc": "/storage/image/2022/7/thumbnail/1656927277-Rx4xPVvpHUDH7q28.jpg",
+      "title": "7 راهکار موثر برای جلوگیری از زانو انداختن شلوار پارچه‌ای",
+      "date": "22 آبان 1403",
+      "category": "مد و استایل",
+      "link": "https://ibolak.com/article/dknk9"
+    },
+    {
+      "imageSrc": "/storage/image/2022/7/thumbnail/1656927277-Rx4xPVvpHUDH7q28.jpg",
+      "title": "استایل کاوایی چیست",
+      "date": "19 آبان 1403",
+      "category": "مد و استایل",
+      "link": "https://ibolak.com/article/ejmjv"
+    }
+  ]
+}
