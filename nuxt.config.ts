@@ -8,7 +8,7 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   devtools: { enabled: false },
   css: ["~/assets/css/main.scss", "~/assets/css/custom.scss"],
-  modules: ["@formkit/auto-animate/nuxt", "nuxt-swiper"],
+  modules: ["@formkit/auto-animate/nuxt", "nuxt-swiper", "@nuxt/image"],
   build: {
     transpile: ["vue-toastification"],
   },

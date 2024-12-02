@@ -1,5 +1,7 @@
 <template>
-  <div class="flex checkbox-input gap-2 items-center w-fit h-fit" :class="{ 'opacity-70 cursor-default': disabled }">
+  <div class="flex checkbox-input gap-2 items-center w-fit h-fit" :class="[{ 'opacity-70 cursor-default': disabled }, {
+    'radio': type == 'radio'
+  }]">
     <div class="checkbox-wrapper-45  h-fit">
       <input :disabled="disabled" :name="name" :value="value" :checked="checked" :id="checkId" :type="type"
         @change="handleChangeInput" />
@@ -14,8 +16,9 @@
         </div>
       </label>
     </div>
-    <label class="flex-grow text-right select-none" :class="{ 'cursor-pointer': disabled == false }" :for="checkId">{{ label
-      }}</label>
+    <label class="flex-grow text-right select-none" :class="{ 'cursor-pointer': disabled == false }" :for="checkId">{{
+      label
+    }}</label>
   </div>
 </template>
 <script lang="ts" setup>
@@ -71,12 +74,12 @@ onMounted(() => {
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .checkbox-wrapper-45 {
   position: relative;
 }
 
-.checkbox-wrapper-45 input[type="checkbox"] {
+.checkbox-wrapper-45 input {
   display: none;
   visibility: hidden;
 }
@@ -106,11 +109,11 @@ onMounted(() => {
   height: 22px;
 }
 
-.checkbox-wrapper-45 input[type="checkbox"]:checked+.cbx {
+.checkbox-wrapper-45 input:checked+.cbx {
   border-color: var(--body-text-color);
 }
 
-.checkbox-wrapper-45 input[type="checkbox"]:checked+.cbx .flip {
+.checkbox-wrapper-45 input:checked+.cbx .flip {
   transform: rotateY(180deg);
 }
 
@@ -137,6 +140,7 @@ onMounted(() => {
   color: #fff;
   line-height: 22px;
   box-shadow: 0 0 0 1px var(--body-text-color);
+
 }
 
 .checkbox-wrapper-45 .back svg {
@@ -149,5 +153,20 @@ onMounted(() => {
   stroke-width: 2.5;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+.radio {
+
+  .back,
+  .cbx {
+    border-radius: 50%;
+  }
+
+  svg {
+    width: 12px;
+    right: 1px;
+    top: 1px;
+    position: relative;
+  }
 }
 </style>

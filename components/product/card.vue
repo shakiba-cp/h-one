@@ -10,7 +10,7 @@
           </svg>
         </span>
       </div>
-      <img :src="props.imageSrc" :alt="props.imageAlt" />
+      <base-img :src="props.imageSrc" :alt="props.imageAlt" />
       <div class="product-image-gallery">
         <div class="product-image-gallery-item" v-for="(image, i) in $props.imageGallery" :key="i">
           <img :src="image.imageSrc" :alt="image.imageAlt" />
@@ -205,6 +205,6 @@ const props = defineProps([
     display: none !important;
   }
 
- 
+
 }
 </style>

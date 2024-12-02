@@ -26,7 +26,7 @@
   --color-gray: #ecebe9;
   --color-muted: #959595;
   --border-light-color: #eaf6ff;
-  // --border-color: rgba(232, 232, 232, 1);
+  --border-color: #e8e8e8;
   // --yellow-light-color: rgba(255, 241, 204, 1);
   // --border-light-color: rgba(245, 245, 245, 1);
   // --red-color: rgba(255, 78, 78, 1);
@@ -56,7 +56,7 @@
 body {
   @apply  text-h6;
   color: var(--body-text-color);
-  font-family: "bakhFanum";
+  font-family: "Kalame";
   background: var(--body-bg-color);
   text-align: right;
 }
