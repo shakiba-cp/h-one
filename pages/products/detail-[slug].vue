@@ -67,7 +67,8 @@
                </div>
                <div class="flex flex-col items-end mt-5 ">
                   <div
-                     class="fixed w-full left-0 items-center bottom-[4.45rem] border-b border-secondary z-10 justify-between hidden sm:flex bg-white shadow py-3 px-3">
+                     class="fixed w-full left-0 items-center bottom-[4.45rem] border-b 
+                     border-secondary z-10 justify-between hidden sm:flex bg-cardBg shadow py-3 px-3">
                      <BaseButton>افزودن به سبد خرید</BaseButton>
                      <p class="text-primary  text-h4">749,000 تومان</p>
                   </div>
@@ -172,7 +173,7 @@ const products = DATABASE["products"] as [];
 </script>
 <style scoped lang="scss">
 .tabs {
-   @apply mt-4 mb-2 bg-white rounded p-5 text-muted;
+   @apply mt-4 mb-2 bg-cardBg rounded p-5 text-muted;
 
    .active {
       @apply relative text-primary;

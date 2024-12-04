@@ -78,7 +78,7 @@ const openSamandehiLogo = () => {
 
 <style scoped>
 footer {
-  @apply border-t border-borderColor mt-12;
+  @apply border-t border-borderColor mt-12 w-full;
   padding-top: 2.5rem;
 }
 
@@ -101,7 +101,7 @@ footer {
 }
 
 .copyright {
-  background: rgba(245, 245, 245, 1);
+  @apply bg-cardBg;
   padding: 1rem 0;
   margin-top: 2rem;
 }

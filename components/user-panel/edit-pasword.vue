@@ -1,104 +1,41 @@
 <script setup lang="ts">
 import { useForm } from "vee-validate";
 import * as yup from "yup";
-const strongRegex = new RegExp(
-  "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})"
-);
+
 const { errors, handleSubmit, defineField } = useForm({
   validationSchema: yup.object({
-    oldPass: yup.string().required("رمز عبور قبلی الزامی است"),
-    password: yup.string().required("رمز عبور الزامی است"),
+    oldPass: yup.string().required().label("رمز عبور قبلی"),
+    password: yup.string().required()
+      .min(6)
+      .label('رمز عبور'),
     passwordConfirmation: yup
       .string()
       .oneOf([yup.ref("password")], "رمز عبور مطابقت ندارد "),
   }),
 });
-
+const data = reactive({
+  oldPassword: "",
+  password: "",
+  confirmPassword: ""
+});
 const onSubmit = handleSubmit((values) => {
   alert(JSON.stringify(values, null, 2));
 });
-
-const [oldPass, oldPassAttrs] = defineField("oldPass");
-const [password, passwordAttrs] = defineField("password");
-const [passwordConfirmation, passwordConfirmationAttrs] = defineField(
-  "passwordConfirmation"
-);
 </script>
 
 <template>
-  <form @submit="onSubmit" class="grid grid-cols-2 gap-5">
+  <form @submit="onSubmit" class="flex flex-col gap-5">
     <div class="col-span-2">
       <DashboardPageTitle title="تغییر کلمه عبور" :has-button="false" />
     </div>
-
-    <div class="felx flex-col">
-      <span>
-        <span>کلمه عبور فعلی </span>
-        
-      </span>
-      <div
-        class="flex pr-2 focus:border-[#e8e8e8] rounded-md bg-[#f2f2f2] transition-all duration-150"
-      >
-        <img src=https://ibolak.com/assets/icons/password-input.svg alt="" />
-        <input
-          type="text"
-          v-model="oldPass"
-          v-bind="oldPassAttrs"
-          class="bg-transparent"
-        />
-      </div>
-      <div class="text-red-700">{{ errors.oldPass }}</div>
+    <BaseInputPassword class="w-full" name="oldPass" v-model="data.oldPassword" label="کلمه عبور فعلی " />
+    <div class="flex gap-5 sm:flex-wrap">
+      <BaseInputPassword class="w-full" name="password" v-model="data.password" label="کلمه عبور فعلی " />
+      <BaseInputPassword class="w-full" name="passwordConfirmation" v-model="data.confirmPassword"
+        label="کلمه عبور فعلی " />
     </div>
-    <div class="felx flex-col">
-      <span>
-        <span>کلمه عبور جدید </span>
-
-        
-      </span>
-      <div
-        class="flex pr-2 focus:border-[#e8e8e8] rounded-md bg-[#f2f2f2] transition-all duration-150"
-      >
-        <img src=https://ibolak.com/assets/icons/password-input.svg alt="" />
-
-        <input
-          type="text"
-          v-model="password"
-          v-bind="passwordAttrs"
-          class="bg-transparent"
-        />
-      </div>
-      <div class="text-red-700">{{ errors.password }}</div>
-
-      <!-- شماره تلفن همراه -->
-    </div>
-    <div class="felx flex-col">
-      <span>
-        <span>تایید کلمه عبور جدید </span>
-
-        
-      </span>
-      <div
-        class="flex pr-2 focus:border-[#e8e8e8] rounded-md bg-[#f2f2f2] transition-all duration-150"
-      >
-        <img src=https://ibolak.com/assets/icons/password-input.svg alt="" />
-
-        <input
-          type="text"
-          v-model="passwordConfirmation"
-          v-bind="passwordConfirmationAttrs"
-          class="bg-transparent"
-        />
-      </div>
-      <div class="text-red-700">{{ errors.passwordConfirmation }}</div>
-    </div>
-
     <div class="col-span-2 flex justify-end">
-      <button
-        class="bg-yellow-300 hover:bg-yellow-500 rounded-md border border-white px-4 py-4 cursor-pointer"
-        type="submit"
-      >
-        تغییر کلمه عبور
-      </button>
+     <BaseButton>تغییر کلمه عبور</BaseButton>
     </div>
   </form>
 </template>

@@ -1,5 +1,6 @@
 <template>
-  <div class="fixed  z-[999] shadow justify-between w-full right-0 bottom-0 hidden sm:flex gap-2 bg-white pb-2 pt-4 px-6">
+  <div class="fixed  z-[999] shadow justify-between w-full right-0 bottom-0 hidden sm:flex gap-2
+   bg-cardBg pb-2 pt-4 px-6">
     <NuxtLink to="/" active-class="active">
       <IconsHome color="black" width="24" height="24" />
       خانه

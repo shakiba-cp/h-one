@@ -11,12 +11,12 @@
         { 'outline': outLine },
         { 'profix-icon': profixIcon && $slots.icon },
         inputClass
-      ]" :placeholder="placeholder" :value="inputValue" :autofocus="autofocus" @input="modelValueChanged"
-        :name="name" :autocomplete="autocomplete" :inputmode="number ? 'numeric' : 'text'"
+      ]" :placeholder="placeholder" :value="inputValue" :autofocus="autofocus" @input="modelValueChanged" :name="name"
+        :autocomplete="autocomplete" :inputmode="number ? 'numeric' : 'text'"
         :maxlength="maxLenght > 0 ? maxLenght : 524288" />
       <div class="input__icon " :class="[
         { 'profix-icon': profixIcon },
-        { 'has-error': errorMessage },
+        { 'has-error': errorMessage && meta.touched },
         { 'opacity-50': disabled }
       ]" v-if="$slots.icon">
         <slot name="icon" />
@@ -30,7 +30,7 @@
 
 
 <script setup lang="ts">
-import {  useField } from "vee-validate";
+import { useField } from "vee-validate";
 
 const slots = useSlots();
 const emit = defineEmits(["update:modelValue"]);
@@ -103,7 +103,7 @@ const props = defineProps({
   },
   profixIcon: {
     type: Boolean,
-    default: false
+    default: true
   },
   value: {
     type: String,
@@ -170,44 +170,6 @@ onMounted(() => {
 })
 </script>
 <style scoped lang="scss">
-.form-control{
-  @apply bg-secondary;
-}
-.checkbox__wrap {
-  display: flex;
-  gap: 0.5rem;
-}
 
-.checkbox__wrap label {
-  cursor: pointer;
-}
 
-.has-icon {
-  padding-left: 2.7rem;
-}
-
-.input__icon {
-  position: absolute;
-  height: 100%;
-  left: 1.25rem;
-  top: 0;
-  display: flex;
-  align-items: center;
-
-  &.has-error {
-    @apply text-red;
-    height: 65%;
-  }
-}
-
-.has-icon.profix-icon {
-  padding-left: 0;
-  padding-right: 2.8rem;
-}
-
-.input__icon.profix-icon {
-  left: 0;
-  right: .75rem;
-  width: min-content;
-}
 </style>

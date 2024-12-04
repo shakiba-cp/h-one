@@ -12,6 +12,7 @@
   "dependencies": {
     "@formkit/auto-animate": "^0.8.2",
     "@nuxt/image": "^1.8.1",
+    "@nuxtjs/color-mode": "^3.5.2",
     "@persian-tools/persian-tools": "^3.5.2",
     "nouislider": "^15.8.1",
     "nuxt": "^3.14.159",

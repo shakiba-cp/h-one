@@ -224,7 +224,7 @@ main {
     transform: translateY(10%);
 
     &:after {
-      @apply sm:!text-[12px] !font-normal;
+      @apply sm:text-[12px] !font-normal;
       font-size: 20px;
       font-weight: bold;
     }
@@ -232,7 +232,7 @@ main {
 }
 
 .h__toast {
-  @apply  dark:bg-secondary dark:text-borderColor;
+  @apply dark:bg-secondary dark:text-borderColor;
   box-shadow: 0px 10px 36px rgba(15, 15, 16, 0.2) !important;
   background: white !important;
   color: black !important;
@@ -275,46 +275,106 @@ main {
 .Vue-Toastification__container {
   z-index: 9999999 !important;
 }
+
 @media screen and (max-width:768px) {
   div.h__toast {
-      margin: 30px auto !important;
-      width: 85% !important;
-      display: flex;
-      min-width: unset !important;
-      min-height: 72px !important;
-      margin-bottom: 0 !important;
+    margin: 30px auto !important;
+    width: 85% !important;
+    display: flex;
+    min-width: unset !important;
+    min-height: 72px !important;
+    margin-bottom: 0 !important;
   }
 
   .Vue-Toastification__toast-body {
-      padding: 1.5rem 12px !important;
-      font-size: var(--h7-font-size) !important;
+    padding: 1.5rem 12px !important;
+    font-size: var(--h7-font-size) !important;
   }
 }
-//Table
-table{
-  width: 100%;
-}
-.table-striped tr td,.table-outer table tr td{
-  box-shadow:none !important;
-  border:none !important;
-  padding:1rem;
+
+/* فایل styles.scss */
+.table-container {
+  @apply relative overflow-x-auto  rounded-lg;
 }
 
-.table-outer table{
-  box-shadow:none;
-  border:none;
+table {
+  @apply w-full text-right border border-borderColor text-gray-500 dark:text-gray-400;
+
+  thead {
+    @apply text-gray-700 bg-lightSecondary dark:bg-secondary dark:text-gray-400;
+
+    th {
+      @apply px-6 py-3 font-medium text-gray-900  dark:text-white;
+    }
+  }
+
+  th,
+  td {
+    @apply px-6 py-3 whitespace-nowrap;
+  }
+
+  tbody {
+    tr {
+      @apply  border-b 
+      border-secondary bg-bodyBg
+       dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600;
+      
+    }
+  }
 }
 
-.table-striped tr td:first-child,.table-outer table tr td:first-child{
-  border-left:1px solid var(--border-color) !important;
-  width:250px;
-}
-.table-striped tr td:nth-child(2),.table-outer table tr td:nth-child(2){
-  padding-right:2rem;
+
+.input-group {
+  position: relative;
+  margin-top: .5rem;
 }
 
-.table-striped tbody tr:nth-child(odd)>*,.table-outer table tbody tr:nth-child(odd)>*{
-  background:var(--color-light-secondary) !important;
-  box-shadow:none;
-  border:none;
+.form-control {
+  @apply bg-lightSecondary dark:bg-darkSecondary border border-secondary transition-all py-4;
+
+  &:focus {
+    @apply bg-secondary;
+  }
+
+  &.invalid-data {
+    color: red;
+    border-color: red;
+
+    &::placeholder {
+      color: red;
+    }
+  }
+}
+
+.has-icon {
+  padding-left: 2.7rem;
+}
+
+.input__icon {
+  position: absolute;
+  height: 100%;
+  left: 1.25rem;
+  top: 0;
+  display: flex;
+  align-items: center;
+
+  &.has-error {
+    color: red;
+    height: 72%;
+  }
+}
+
+.has-icon.profix-icon {
+  padding-left: 0;
+  padding-right: 2.8rem;
+}
+
+.input__icon.profix-icon {
+  left: 0;
+  right: .75rem;
+  width: min-content;
+}
+
+.input-invalid-text {
+  color: red;
 }

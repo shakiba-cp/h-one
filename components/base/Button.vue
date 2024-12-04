@@ -175,7 +175,7 @@ const {
 }
 
 .btn-secondary {
-  @apply bg-secondary text-black;
+  @apply bg-secondary text-black dark:text-white;
 
   &:hover {
     @apply bg-darkSecondary;

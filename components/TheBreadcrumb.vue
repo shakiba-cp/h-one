@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray py-4 mb-4">
+  <div class="bg-gray dark:bg-cardBg py-4 mb-4">
     <nav class="container flex gap-3">
       <nuxt-link to="/">فروشگاه آی‌بولک</nuxt-link>
       <template v-for="item in items">
