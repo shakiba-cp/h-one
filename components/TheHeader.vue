@@ -1,37 +1,28 @@
 <template>
   <header class="bg-white dark:bg-cardBg">
-
-    <teleport to="body">
-      <div v-if="SearchState" class="backdrop"></div>
-    </teleport>
     <div class="container sm:hidden max-w-[95%] mx-auto px-4">
       <div class="flex items-center justify-between mb-3">
-        <div class="flex items-stretch gap-3">
-          <BaseButton :outline="true" color="secondary">
+        <div class="flex  gap-3 items-center">
+          <BaseButton  outline color="secondary">
             سبد خرید
             <template #icon>
-              <img src="/icons/basket.svg" alt="basket icon" />
+              <IconsBasket />
             </template>
           </BaseButton>
 
-          <BaseButton to="/panel">
+          <BaseButton @click="authStore.openLoginModal">
             حساب کاربری
             <template #icon>
               <IconsUser />
             </template>
           </BaseButton>
 
-          <div @click="toggleSearchState" dir="rtl" class="flex items-center relative search-wrapper">
-            <span class="absolute right-3 top-1/2 transform -translate-y-1/2">
-              <img src="/icons/search.svg" alt="Search Icon" />
-            </span>
-            <input name="search_key" autocomplete="off" maxlength="100" type="text"
-              class="pl-10 pr-3 py-2 border rounded w-full" placeholder="جستجو در آی‌بولک" />
+          <BaseInput name="search" inputClass="min-w-[350px]" placeholder="جستجو...">
+            <template #icon>
+              <IconsSearch />
+            </template>
+          </BaseInput>
 
-
-          </div>
-
-          <!-- Autocomplete Section -->
         </div>
         <nuxt-link to="/">
           <img src="/images/ibolak-logo.svg" class="h-12" alt="آی‌بولک" />
@@ -120,33 +111,16 @@ const router = useRouter();
 // Reactive state for categories and search
 const SearchState = ref(false);
 const categories = DATABASE["headerCategories"]
-
-// Refs for DOM elements
-const searchWrapper = ref<HTMLElement | null>(null);
-const autocomplete = ref<HTMLElement | null>(null);
+const authStore = useAuthStore();
 
 // Toggle function for search state
 const toggleSearchState = () => {
   SearchState.value = !SearchState.value;
 };
 
-// Handle click outside
-const handleClickOutside = (event: MouseEvent) => {
-  const target = event.target as HTMLElement;
 
-  if (!searchWrapper.value?.contains(target) && !autocomplete.value?.contains(target)) {
-    SearchState.value = false;
-  }
-};
 
-// Add and remove event listeners
-onMounted(() => {
-  document.addEventListener("mousedown", handleClickOutside);
-});
 
-onBeforeUnmount(() => {
-  document.removeEventListener("mousedown", handleClickOutside);
-});
 
 // Watch for changes in SearchState
 watch(SearchState, (newVal) => {

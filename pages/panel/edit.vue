@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="col-span2">
-      <DashboardPageTitle title="ویرایش حساب" :has-button="false" />
+      <PanelPageTitle title="ویرایش حساب" :has-button="false" />
     </div>
-    <UserPanelEditUserForm />
-    <UserPanelEditPasword />
+    <PanelEditInfo />
+    <PanelEditPassword />
   </div>
 </template>
 

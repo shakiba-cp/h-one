@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="">
-      <DashboardPageTitle title="سفارش‌ها" />
+      <PanelPageTitle title="سفارش‌ها" />
       <div class="table-container">
         <table>
           <thead>

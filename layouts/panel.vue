@@ -5,7 +5,7 @@
     <div class="container mt-8">
       <div class="flex relative sm:flex-wrap gap-8 dashboard-page">
         <PanelTheSideBar />
-        <div class="card flex-grow sm:w-full" id="content">
+        <div class="card w-[75%] md:w-[70%] flex-grow sm:!w-full" id="content">
           <slot />
         </div>
       </div>

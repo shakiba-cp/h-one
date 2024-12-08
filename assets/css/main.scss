@@ -2,6 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Kalame";
+  src: url(/fonts/Kalameh/KalamehWebFaNum-Regular.woff2);
+}
+
+@font-face {
+  font-family: bakhFanum;
+  src: url(/fonts/bakh-fanum/Bold.woff) format("woff");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: bakhFanum;
+  src: url(/fonts/bakh-fanum/regular.woff) format("woff");
+  font-weight: normal;
+  font-display: swap;
+}
+
 :root {
   --color-primary: #ff6a6a;
   --color-darker-primary: #d23636;
@@ -51,27 +70,6 @@ html.dark {
     filter: brightness(.9);
   }
 }
-@font-face {
-  font-family: "Kalame";
-  src: url(/fonts/Kalameh/KalamehWebFaNum-Regular.woff2);
-}
-
-@font-face {
-  font-family: bakhFanum;
-  src: url(/fonts/bakh-fanum/Bold.woff) format("woff");
-  font-weight: 700;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: bakhFanum;
-  src: url(/fonts/bakh-fanum/regular.woff) format("woff");
-  font-weight: normal;
-  font-display: swap;
-}
-
-
-
 body {
   @apply text-h6;
   color: var(--body-text-color);
@@ -79,7 +77,12 @@ body {
   background: var(--body-bg-color);
   text-align: right;
 }
-
+@media screen and (min-width:1024px) {
+  .container {
+      padding-left: 5rem;
+      padding-right: 5rem;
+  }
+}
 html {
   scroll-behavior: smooth;
 }
@@ -787,5 +790,5 @@ label {
 }
 
 .container {
-  max-width: 1320px;
+  max-width: 1680px;
 }

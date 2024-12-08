@@ -48,7 +48,7 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
+defineProps({
   color: {
     type: String,
     default: "primary",
@@ -94,19 +94,7 @@ const props = defineProps({
     default: false,
   },
 });
-const {
-  leftIcon,
-  soft,
-  colorWhite,
-  size,
-  to,
-  rounded,
-  outline,
-  disabled,
-  loading,
-  color,
-  transparent,
-} = props;
+
 </script>
 
 <style scoped lang="scss">
@@ -160,7 +148,7 @@ const {
   }
 
   &.btn-outline {
-    border-color: var(--color-primary);
+    @apply border border-primary;
     color: var(--color-primary);
   }
 
@@ -182,11 +170,9 @@ const {
   }
 
   &.btn-outline {
-    @apply border border-darkSecondary;
+    @apply border border-darkSecondary hover:bg-opacity-80 hover:bg-gray-100 dark:hover:bg-darkSecondary dark:border-lightSecondary;
 
-    &:hover {
-      @apply text-white;
-    }
+
   }
 
   &.soft {
@@ -217,6 +203,12 @@ const {
   }
 }
 
+.btn-green {
+  @apply bg-green-700 text-white;
+  &:hover {
+    opacity: 0.6;
+  }
+}
 .loading {
   pointer-events: none;
 }
@@ -232,35 +224,29 @@ const {
 }
 
 .btn-outline {
-  background: transparent;
-  @apply border-muted;
-
+  background: transparent !important;
   &.btn-gray {
     border-color: #e5ebf6;
   }
-
   &.btn-danger {
     border-color: var(--color-error);
     color: var(--color-error);
   }
-
   &.btn-info {
     border-color: #2094f3;
     color: #2094f3;
   }
-
   &.btn-orange {
     border-color: #ff9900;
     color: #ffa114;
   }
-
   &:hover {
     opacity: 0.8;
   }
 }
 
 .btn-sm {
-  @apply border-none px-2 py-2 rounded-sm sm:p-2;
+  @apply  px-2 py-1 rounded-sm sm:p-2;
 }
 
 .btn-lg {

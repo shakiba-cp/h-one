@@ -23,6 +23,10 @@
         <IconsBasket />
         سفارش‌ها
       </NuxtLink>
+      <NuxtLink to="/panel/addresses#content" class="side-link">
+        <IconsAddress />
+        آدرس‌ها
+      </NuxtLink>
     </div>
   </aside>
 </template>

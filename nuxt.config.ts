@@ -13,6 +13,7 @@ export default defineNuxtConfig({
     "nuxt-swiper",
     "@nuxt/image",
     "@nuxtjs/color-mode",
+    "@pinia/nuxt"
   ],
   build: {
     transpile: ["vue-toastification"],

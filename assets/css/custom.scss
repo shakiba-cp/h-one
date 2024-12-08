@@ -317,7 +317,7 @@ table {
     tr {
       @apply  border-b 
       border-secondary bg-bodyBg
-       dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600;
+       dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-lightSecondary;
       
     }
   }
@@ -326,7 +326,6 @@ table {
 
 .input-group {
   position: relative;
-  margin-top: .5rem;
 }
 
 .form-control {

@@ -164,7 +164,7 @@ body.modal-open {
 .modal {
     border-radius: 27.757px;
     overflow: initial;
-    @apply bg-white dark:bg-lightSecondary;
+    @apply bg-white dark:bg-darkSecondary;
     max-width: 51rem;
     width: 100%;
     flex-shrink: 0;
@@ -192,7 +192,6 @@ body.modal-open {
 
             h5 {
                 font-size: var(--t5-font-size);
-                font-family: var(--t5-font-family);
             }
         }
     }
@@ -274,7 +273,7 @@ body.modal-open {
 }
 
 .modal__body {
-    padding: 2rem 3rem 1rem 3rem;
+    padding: 2rem 2rem 0rem 2rem;
     overflow-x: inherit;
 }
 

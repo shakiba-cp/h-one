@@ -1,6 +1,6 @@
 <template>
   <div>
-    <label :class="['input-label']" v-if="label">{{ label }}<span class="text-red-600" v-if="required">
+    <label :class="['input-label mb-2']" v-if="label">{{ label }}<span class="text-red-600" v-if="required">
         *</span></label>
     <div :class="['input-group']">
       <input ref="inputElement" @blur="handleBlur($event, true)" :type="type" :disabled="disabled" :class="[
