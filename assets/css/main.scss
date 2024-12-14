@@ -24,7 +24,7 @@
 :root {
   --color-primary: #ff6a6a;
   --color-darker-primary: #d23636;
-  --color-light-primary: #f6c5bc;
+  --color-light-primary: #ffdcdc;
   --color-secondary: #ecebe9;
   --color-light-secondary: #f5f5f5;
   --color-darker-secondary: #d9d9d9;
@@ -76,6 +76,8 @@ body {
   font-family: "Kalame";
   background: var(--body-bg-color);
   text-align: right;
+  direction: rtl;
+  overflow-x: hidden;
 }
 @media screen and (min-width:1024px) {
   .container {
@@ -86,12 +88,9 @@ body {
 html {
   scroll-behavior: smooth;
 }
-
-html,
-body {
-  overflow-x: hidden;
+del{
+  @apply text-muted;
 }
-
 * {
   outline: none;
   box-shadow: none;
@@ -103,77 +102,6 @@ body {
 
 header {
   padding-top: 2rem;
-}
-
-
-.search-wrapper {
-  background: var(--light-color);
-  border-radius: var(--border-radius);
-  display: flex;
-  align-items: center;
-  padding: 0rem 1.5rem;
-  margin-right: 0.5rem;
-}
-
-.search-wrapper-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-}
-
-.search-wrapper-icon img {
-  width: 24px;
-  height: auto;
-}
-
-.search-wrapper input {
-  min-width: 300px;
-  padding: 1rem;
-  border: none !important;
-  background: transparent;
-}
-
-.dots-after {
-  position: relative;
-  padding: 1rem 0;
-  padding-bottom: 2rem;
-}
-
-.dots-after-dots {
-  position: absolute;
-  bottom: 1rem;
-  left: 0;
-  right: 0;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.25rem;
-}
-
-.dots-after-dots span {
-  width: 6px;
-  height: 6px;
-  background: var(--primary-color);
-  border-radius: 50%;
-  display: block;
-  opacity: 0;
-  transform: scale(0.5);
-  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.dots-after:hover .dots-after-dots span,
-.dots-after.active .dots-after-dots span {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.dots-after-dots span:nth-child(2) {
-  width: 9px;
-  height: 9px;
-  transition-delay: 0.1s;
 }
 
 .header-nav {

@@ -1,10 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  routeRules: {
-    "/panel": { ssr: false },
-    "/panel/**": { ssr: false },
-    "/panel/**/**": { ssr: false },
-  },
   compatibilityDate: "2024-04-03",
   devtools: { enabled: false },
   css: ["~/assets/css/main.scss", "~/assets/css/custom.scss"],
@@ -27,12 +22,11 @@ export default defineNuxtConfig({
       name: "layout",
       mode: "out-in",
     },
-    head: {
-      htmlAttrs: {
-        dir: "rtl",
-        lang: "fa",
-      },
-    },
+    // head: {
+    //   htmlAttrs: {
+    //     dir: "rtl",
+    //   },
+    // },
   },
   postcss: {
     plugins: {

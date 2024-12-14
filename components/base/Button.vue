@@ -153,7 +153,7 @@ defineProps({
   }
 
   &.soft {
-    background: var(--color-primary-100);
+    background: var(--color-light-primary) !important;
     color: var(--color-primary);
 
     &:hover {

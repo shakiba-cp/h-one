@@ -3,7 +3,7 @@
     <div class="container sm:hidden max-w-[95%] mx-auto px-4">
       <div class="flex items-center justify-between mb-3">
         <div class="flex  gap-3 items-center">
-          <BaseButton  outline color="secondary">
+          <BaseButton to="/cart" outline color="secondary">
             سبد خرید
             <template #icon>
               <IconsBasket />
