@@ -5,24 +5,24 @@
         title: 'سبد خرید'
       }]" />
     <div class="container ">
-      <div class="gap-5 flex  justify-between w-full">
-        <div class="w-[70%] card">
+      <div class="gap-5 flex md:flex-wrap pt-2 justify-between w-full">
+        <div class="w-[70%] card md:w-full">
           <div
             class="flex gap-2 justify-between items-center mb-4 pb-4 border-b last:border-none last:mb-0 last:pb-0 border-borderColor"
             v-for="item in [1, 2, 3]">
             <BaseImg src="/images/product.png" alt="product"
-              class="w-[100px] h-[100px] rounded border border-borderColor" />
+              class="w-[100px] h-[100px] sm:w-[80px] sm:h-[80px] rounded border border-borderColor" />
             <div class="flex justify-start flex-grow flex-col">
               <p class="text-h5 mb-3">شکت 21399</p>
               <BaseNumberIncrementor />
             </div>
             <div class="self-start">
-              <div class="flex items-center gap-2">
-                <div class="bg-lightSecondary p-2 rounded-sm">
+              <div class="flex items-center gap-2 sm:flex-wrap sm:justify-end">
+                <div class="bg-lightSecondary sm:text-h7 p-2 rounded-sm">
                   رنگ : قهوه ای
                 </div>
                 <BaseButton soft size="sm">
-                  <IconsTrash />
+                  <IconsTrash class="sm:w-[18px] sm:h-[18px]"/>
                 </BaseButton>
               </div>
               <div class="text-left mt-2">
@@ -32,7 +32,7 @@
             </div>
           </div>
         </div>
-        <div class="w-[30%] card h-fit sticky top-1">
+        <div class="w-[30%] md:w-full card h-fit sticky top-1">
           <h1 class="text-h4 pb-3 border-b border-borderColor">فاکتور خرید شما</h1>
           <div class="flex flex-col gap-3 mt-4">
             <div class="flex justify-between gap-2">
@@ -61,7 +61,9 @@
 </template>
 
 <script lang="ts" setup>
-
+definePageMeta({
+  title: "سبد خرید"
+})
 </script>
 
 <style></style>

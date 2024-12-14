@@ -1,6 +1,6 @@
 <template>
     <nav v-if="filterResult && filterResult.pageCount > 1">
-        <ul class="inline-flex w-full justify-center gap-2 mt-5 items-center">
+        <ul class="inline-flex flex-wrap w-full justify-center gap-2 mt-5 items-center">
             <li :class="{ 'card-loading': modelValue == 1 }" @click="prevPage()">
                 <button class="btn">قبلی</button>
             </li>
@@ -21,7 +21,6 @@
     </nav>
 </template>
 <script setup lang="ts">
-import { BaseFilterResult } from '~/models/IApiResponse';
 
 const emit = defineEmits(['update:modelValue'])
 const props = defineProps({
@@ -36,7 +35,8 @@ const props = defineProps({
         default: ""
     }
 })
-const filterPaginationResult = props.filterResult as BaseFilterResult;
+
+const filterPaginationResult = props.filterResult as any;
 
 const prevPage = () => {
     if (props.modelValue > 1)

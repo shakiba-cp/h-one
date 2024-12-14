@@ -23,6 +23,7 @@
 <script lang="ts" setup>
 import { Form } from 'vee-validate';
 import * as Yup from 'yup'
+import { checkPhone } from '~/services/auth.service';
 const schema = Yup.object().shape({
   //@ts-ignore
   phoneNumber: Yup.string().phoneNumber().required()
@@ -37,7 +38,10 @@ const loading = ref(false);
 
 const validate = async () => {
   loading.value = true;
-  authStore.changeStep('code');
+  var res = await checkPhone(authStore.phoneNumber);
+  if (res.isSuccess) {
+    authStore.changeStep('code');
+  }
 }
 const login = () => {
   router.push('/panel');

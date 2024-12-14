@@ -32,7 +32,7 @@
 
 <style scoped lang="scss">
 a {
-  @apply flex relative transition-all flex-col gap-1 justify-center items-center;
+  @apply flex relative transition-all flex-col gap-1 text-h7 justify-center items-center;
 
   svg {
     @apply transition-all;

@@ -1,6 +1,6 @@
 <template>
-  <header class="bg-white dark:bg-cardBg">
-    <div class="container sm:hidden max-w-[95%] mx-auto px-4">
+  <header class="bg-white dark:bg-cardBg w-full pb-2">
+    <div class="container sm:hidden max-w-[95%] sm:!max-w-full sm:!w-full mx-auto px-4">
       <div class="flex items-center justify-between mb-3">
         <div class="flex  gap-3 items-center">
           <BaseButton to="/cart" outline color="secondary">
@@ -67,8 +67,8 @@
             </li>
           </ul>
         </div>
-        <div class="flex w- items-center  space-x-4 rtl:space-x-reverse">
-          <ThedarkModeSwicher />
+        <div class="flex gap-2 items-center ">
+          <TheDarkModeSwicher/>
           <BaseButton color="secondary">
             اینستاگرام آی‌بولک
             <template #icon>

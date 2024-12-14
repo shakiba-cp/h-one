@@ -1,6 +1,6 @@
 <template>
    <div class="flex flex-wrap">
-      <div class="p-2 w-1/2" v-for="item in [1, 2, 3]">
+      <div class="p-2 w-1/2 sm:w-full" v-for="item in [1, 2, 3]">
          <div class="border border-borderColor rounded p-4 flex flex-col gap-3 ">
             <p>استان فارس - شهرستان رستم - شهر مصیری - روستای شوسنی - منزل غضنفر اشرافی</p>
             <div class="flex gap-2 items-center">
@@ -26,7 +26,7 @@
             </div>
          </div>
       </div>
-      <div class="p-2 w-1/2">
+      <div class="p-2 w-1/2 sm:w-full sm:h-[200px]">
          <PanelAddressAdd />
       </div>
 

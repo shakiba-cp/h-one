@@ -36,7 +36,8 @@ onMounted(() => {
 <style scoped lang="scss">
 .checkbox {
   opacity: 0;
-  position: absolute;
+  position: absolute; 
+  width: 5px;
 }
 
 .checkbox-label {
