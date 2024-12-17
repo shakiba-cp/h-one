@@ -15,9 +15,7 @@
           enabled: true,
         }">
         <template #item="{ item }">
-          <ProductCard :imageSrc="item.imageSrc" :title="item.title" :price="item.price"
-            :discountPercent="item.discountPercent" :category="item.category" :parent-category="item.parentCategory"
-            :image-gallery="item.imageGallery" />
+          <ProductCard :item="item" />
         </template>
       </BaseCarousel>
     </div>
@@ -26,6 +24,7 @@
 
 <script lang="ts" setup>
 import type { IProductData } from "@/types/ProductModel";
+import type { ProductItem } from "~/models/Banner";
 const breakpoints = ref({
   1200: {
     slidesPerView: 6,
@@ -48,7 +47,7 @@ const breakpoints = ref({
 });
 const { sectionTitle, slides } = defineProps<{
   sectionTitle: string;
-  slides: []
+  slides: ProductItem[]
 }>();
 
 const items = slides;

@@ -232,7 +232,7 @@ main {
 }
 
 .h__toast {
-  @apply dark:bg-secondary dark:text-borderColor;
+  @apply dark:bg-secondary dark:text-borderColor ;
   box-shadow: 0px 10px 36px rgba(15, 15, 16, 0.2) !important;
   background: white !important;
   color: black !important;
@@ -240,12 +240,13 @@ main {
   padding: 0 0 0 1.5rem !important;
   min-width: 400px !important;
   max-width: 100% !important;
-
+  font-family: var(--h1-font-family) !important;
 }
 
 .Vue-Toastification__toast-body {
   padding: 1.5rem 1rem;
 }
+
 
 .Vue-Toastification__progress-bar {
   background: #F0EFEF !important;
@@ -342,6 +343,10 @@ table {
     &::placeholder {
       color: red;
     }
+  }
+  &:disabled{
+    opacity: .4;
+    cursor: no-drop;
   }
 }
 

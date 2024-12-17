@@ -1,5 +1,8 @@
 <template>
   <nuxt-link to="/products/detail-slug" class="product">
+    <label v-if="item.off_percent != '0'"
+      class="absolute top-5 left-0 rounded-r-full text-white bg-primary z-10 py-1 px-3">{{ item.off_percent }}
+      درصد</label>
     <div class="product-image">
       <div class="product-image-meta">
         <span class="product-like" data-type="30" data-id="l83w5">
@@ -10,39 +13,45 @@
           </svg>
         </span>
       </div>
-      <base-img :src="props.imageSrc" :alt="props.imageAlt" />
+      <base-img width="250px" height="400px" fit="contain" :src="`shop/${item.images[0].source}`" :alt="item.images[0].title" />
       <div class="product-image-gallery">
-        <div class="product-image-gallery-item" v-for="(image, i) in $props.imageGallery" :key="i">
-          <img :src="image.imageSrc" :alt="image.imageAlt" />
+        <div class="product-image-gallery-item" v-for="(image, i) in [...item.images].splice(-1)" :key="i">
+          <BaseImg width="80px"  :src="`shop/${image.source}`" :alt="image.title" />
         </div>
       </div>
     </div>
     <div class="product-body w-full flex justify-between">
       <div class="product-body-right">
         <div class="d-flex align-items-center product-categories">
-          <span>{{ props.category }}/{{ props.parentCategory }}</span>
+          <!-- <span>{{ props.category }}/{{ props.parentCategory }}</span> -->
         </div>
-        <strong class="product-title">{{ props.title }}</strong>
+        <strong class="product-title">{{ item.name }}</strong>
       </div>
       <div class="product-body-left items-end flex flex-col">
-        <strong class="text-primary persian-number">{{ props.price }}</strong>
+        <small v-if="item.off_percent != '0'"><del class=" persian-number">{{ Number(item.price).toLocaleString()
+            }}</del></small>
+        <strong class="text-primary persian-number">{{ totalPrice() }}</strong>
         <small class="text-muted">تومان</small>
       </div>
     </div>
   </nuxt-link>
 </template>
 
-<script setup>
-const props = defineProps([
-  "imageSrc",
-  "imageAlt",
-  "imageGallery",
-  "title",
-  "price",
-  "discountPercent",
-  "category",
-  "parentCategory",
-]);
+<script setup lang="ts">
+import type { ProductItem } from '~/models/Banner';
+
+
+const props = defineProps<{
+  item: ProductItem
+}>();
+const totalPrice = () => {
+  var offPercent = +props.item.off_percent;
+  if (offPercent == 0) {
+    return (+props.item.price).toLocaleString();
+  }
+  var discount = (+props.item.price * offPercent / 100)
+  return (+props.item.price-discount).toLocaleString();
+}
 </script>
 <style scoped lang="scss">
 .product-title {
@@ -101,6 +110,7 @@ const props = defineProps([
   width: 100%;
   height: 100%;
   object-fit: cover;
+  aspect-ratio: 1.1;
   transition: transform 0.5s ease-out;
   will-change: transform;
   z-index: 0;
@@ -156,7 +166,8 @@ const props = defineProps([
 .product-image-gallery-item img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  aspect-ratio: 1;
 }
 
 .product-like:hover {

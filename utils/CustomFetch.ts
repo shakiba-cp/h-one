@@ -5,33 +5,39 @@ import { BASE_URL } from "./EnvironmentVariables";
 
 export function CustomFetch<T>(
   url: string,
-  config: FetchConfig | undefined = {}
+  config: FetchConfig | undefined = {},
+  ignoreErrors: boolean = false
 ): Promise<ApiResponse<T>> {
   var newConfig: FetchConfig = {
     baseURL: BASE_URL,
     ...config,
     retry: 0,
   };
-  // const accountStore = useAccountStore();
-  // if (accountStore.isLogin) {
-  //   if (!newConfig.headers) {
-  //     newConfig.headers = {};
-  //   }
-  //   //@ts-ignore
-  //   newConfig.headers["authorization"] = `Bearer ${accountStore.getToken!}`;
-  // }
+  const authStore = useAuthStore();
+  if (authStore.isLogin) {
+    if (!newConfig.headers) {
+      newConfig.headers = {};
+    }
+    //@ts-ignore
+    newConfig.headers["authorization"] = authStore.getAccessToken();
+  }
   const shoError = (data: ApiResponse<any>) => {
-    if (process.client) {
-     
+    if (process.client && ignoreErrors == false) {
+      const toast = useToast();
+      toast.showToast(data.metaData.message, ToastType.error);
     }
   };
   //@ts-ignore
   return $fetch<ApiResponse<T>>(url, newConfig)
-    .then((response) => {
-      if (response.isSuccess == false) {
-        shoError(response);
-      }
-      return response;
+    .then((response: any) => {
+      return {
+        data: response.content.data,
+        isSuccess: response.content.success,
+        metaData: {
+          appStatusCode: AppStatusCode.Success,
+          message: "Success",
+        },
+      };
     })
     .catch((e: FetchError) => {
       var customResponse = {
@@ -41,23 +47,23 @@ export function CustomFetch<T>(
           appStatusCode:
             e.response._data?.metaData?.appStatusCode ??
             AppStatusCode.ServerError,
-          message: e.response._data?.metaData?.message ?? "خطای سمت سرور",
+          message: e.response._data?.message ?? "خطای سمت سرور",
         },
       } as ApiResponse<undefined>;
       switch (e.response.status) {
         case 400: {
           customResponse.metaData.message =
-            e.response._data?.metaData?.message ?? "اطلاعات نامعتبر است";
+            e.response._data?.message ?? "اطلاعات نامعتبر است";
           break;
         }
         case 401: {
           customResponse.metaData.message =
-            e.response._data?.metaData?.message ?? "دسترسی غیرمجاز";
+            e.response._data?.message ?? "دسترسی غیرمجاز";
           break;
         }
         case 404: {
           customResponse.metaData.message =
-            e.response._data?.metaData?.message ?? "اطلاعات نامعتبر است";
+            e.response._data?.message ?? "اطلاعات نامعتبر است";
           break;
         }
       }

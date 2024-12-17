@@ -1,16 +1,19 @@
 import { defineStore } from "pinia";
+import { GetCurrentUser } from "~/services/profile.service";
 
 export const useAuthStore = defineStore("auth", () => {
   const isOpenModal = ref(false);
   const currentStep = ref("phoneNumber");
   const callBackFunctionAfterLogin: Ref<Function | null> = ref(null);
   const phoneNumber = ref("");
-  //   const registerData: Ref<RegisterCommand | null> = ref(null);
-
+  const dataLoading = ref(false);
+  const userData: Ref<{
+    phone: string;
+    name: string;
+  } | null> = ref(null);
   const getAccessToken = () => {
-    var cookie = useCookie("c-access-token", {
+    var cookie = useCookie("s-access-token", {
       watch: false,
-      expires: new Date(new Date().setDate(new Date().getDate() + 30)),
     });
     return cookie.value;
   };
@@ -18,31 +21,25 @@ export const useAuthStore = defineStore("auth", () => {
     var cookie = getAccessToken();
     return cookie != null && cookie != "";
   });
-  //   const setToken = (tokenResult: LoginResult) => {
-  //     var cookie = useCookie("c-access-token", {
-  //       expires: new Date(new Date().setDate(new Date().getDate() + 30)),
-  //     });
-  //     var refreshCookie = useCookie("c-refresh-token", {
-  //       expires: new Date(new Date().setDate(new Date().getDate() + 30)),
-  //     });
-  //     cookie.value = tokenResult.token;
-  //     refreshCookie.value = tokenResult.refreshToken;
-  //     setTimeout(() => {
-  //       if (
-  //         callBackFunctionAfterLogin.value != null &&
-  //         callBackFunctionAfterLogin.value != undefined
-  //       ) {
-  //         callBackFunctionAfterLogin.value!();
-  //       }
-  //     }, 300);
-  //   };
+  const setToken = (token: string) => {
+    var cookie = useCookie("s-access-token", {
+      expires: new Date(new Date().setDate(new Date().getDate() + 30)),
+    });
+    cookie.value = token;
+    setTimeout(() => {
+      if (
+        callBackFunctionAfterLogin.value != null &&
+        callBackFunctionAfterLogin.value != undefined
+      ) {
+        callBackFunctionAfterLogin.value!();
+      }
+    }, 300);
+  };
   const logOut = async () => {
     //  var res = await LogoutUser();
     //  if (res.isSuccess) {
-    //    var cookie = useCookie("c-access-token");
-    //    var refreshCookie = useCookie("c-refresh-token");
+    //    var cookie = useCookie("s-access-token");
     //    cookie.value = null;
-    //    refreshCookie.value = null;
     //    location.reload();
     //  }
   };
@@ -54,16 +51,26 @@ export const useAuthStore = defineStore("auth", () => {
     isOpenModal.value = true;
     callBackFunctionAfterLogin.value = fn;
   };
+  const setCurrentUser = async () => {
+    dataLoading.value = true;
+    var res = await GetCurrentUser();
+    if (res.isSuccess) {
+      userData.value = res.data as any;
+    }
+    dataLoading.value = false;
+  };
   return {
     isOpenModal,
     isLogin,
+    dataLoading,
     changeStep,
     currentStep,
-    //  registerData,
     openLoginModal,
     phoneNumber,
-    //  setToken,
+    setToken,
     logOut,
     getAccessToken,
+    setCurrentUser,
+    userData,
   };
 });

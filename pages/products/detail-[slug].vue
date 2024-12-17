@@ -154,7 +154,7 @@
             <h4>نظرات</h4>
          </div>
          <section class="mt-5">
-            <HomeLatestMens section-title="محصولات مرتبط" :slides="products"/>
+            <!-- <HomeLatestMens section-title="محصولات مرتبط" :slides="products"/> -->
          </section>
       </div>
    </div>

@@ -107,7 +107,7 @@ const props = defineProps({
   },
   value: {
     type: String,
-    default: ""
+    default: undefined
   }
 });
 
@@ -164,7 +164,6 @@ onMounted(() => {
   if (props.autofocus) {
     setTimeout(() => {
       inputElement.value!.focus();
-
     }, 200);
   }
 })

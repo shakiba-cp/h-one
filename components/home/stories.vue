@@ -1,46 +1,41 @@
 <template>
-  <div class="flex overflow-x-auto gap-3 bg-cardBg p-2 mt-4 rounded">
-    <div class="text-center" v-for="item in [1, 2, 3]" :key="item">
-      <img src="/images/product.png" class="rounded-full border border-borderColor w-[80px] h-[80px]" alt="test" />
-      <p class="mt-1">ترنچ کت</p>
+  <div>
+    <div class="flex overflow-x-auto gap-3 bg-cardBg p-3 mt-4 rounded">
+      <button @click="openStory(item)" class="text-center min-w-fit" v-for="(item, index) in data" :key="index">
+        <BaseImg :src="`shop/${item.image}`" class="rounded-full border border-borderColor 
+        w-[80px] h-[80px] sm:w-[70px] sm:h-[70px]"
+          :alt="item.title" />
+        <p class="mt-1">{{ item.title }}</p>
+      </button>
     </div>
-    <div class="text-center">
-      <img src="/iamges/avatars/1.svg" class="rounded-full border border-borderColor w-[80px] h-[80px]" alt="test" />
-      <p class="mt-1">ترنچ کت</p>
-    </div>
-    <div class="text-center" v-for="item in [1, 2, 3]" :key="item">
-      <img src="/iamges/avatars/1.svg" class="rounded-full border border-borderColor w-[80px] h-[80px]" alt="test" />
-      <p class="mt-1">ترنچ کت</p>
-    </div>
-    <div class="text-center" v-for="item in [1, 2, 3]" :key="item">
-      <img src="/images/product.png" class="rounded-full border border-borderColor w-[80px] h-[80px]" alt="test" />
-      <p class="mt-1">ترنچ کت</p>
-    </div>
-    <div class="text-center" v-for="item in [1, 2, 3]" :key="item">
-      <img src="/iamges/avatars/1.svg" class="rounded-full border border-borderColor w-[80px] h-[80px]" alt="test" />
-      <p class="mt-1">ترنچ کت</p>
-    </div>
-    <div class="text-center" v-for="item in [1, 2, 3]" :key="item">
-      <img src="/images/product.png" class="rounded-full border border-borderColor w-[80px] h-[80px]" alt="test" />
-      <p class="mt-1">ترنچ کت</p>
-    </div>
-    <div class="text-center">
-      <img src="/iamges/avatars/1.svg" class="rounded-full border border-borderColor w-[80px] h-[80px]" alt="test" />
-      <p class="mt-1">ترنچ کت</p>
-    </div>
-    <div class="text-center" v-for="item in [1, 2, 3]" :key="item">
-      <img src="/images/product.png" class="rounded-full border border-borderColor w-[80px] h-[80px]" alt="test" />
-      <p class="mt-1">ترنچ کت</p>
-    </div>
+    <BaseModal size="sm" header-class="!pt-6" :title="selectedStory?.title" v-model="isOpenModal">
+      <video controls v-if="selectedStory?.content.endsWith('.mp4')" :src="BASE_IMAGE_URL + selectedStory?.content"
+        class="w-full" />
+      <BaseImg v-else :src="`shop/${selectedStory!.content}`" class="rounded w-full border border-borderColor"
+        :alt="selectedStory!.title" />
+      <p v-if="selectedStory?.description" v-html="selectedStory!.description" class="mt-2"></p>
+      <BaseButton class="w-full mt-2" :to="selectedStory!.link">مشاهده</BaseButton>
+    </BaseModal>
   </div>
 </template>
 
 <script lang="ts" setup>
+import type { Story } from '~/models/Banner';
+const selectedStory: Ref<Story | null> = ref(null);
+const isOpenModal = ref(false);
 
+defineProps<{
+  data: Story[]
+}>();
+
+const openStory = (story: Story) => {
+  isOpenModal.value = true;
+  selectedStory.value = story;
+}
 </script>
 
 <style scoped lang="scss">
-div.text-center{
+div.text-center {
   min-width: fit-content;
   flex-grow: 1;
 }

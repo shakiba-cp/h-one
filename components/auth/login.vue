@@ -11,10 +11,12 @@
         </BaseInput>
         <BaseButton :disabled="(meta.valid == false)" type="submit" class="w-full mt-2">ثبت و ادامه</BaseButton>
       </Form>
-      <div class="flex flex-col gap-3" v-else :class="{ 'card-loading': loading }">
+      <div class="flex flex-col gap-2" v-else :class="{ 'card-loading': loading }">
         <p>کد تایید :</p>
-        <BaseStepInput :length="4" />
-        <BaseButton @click="login" class="w-full mt-2">ثبت و ورود به سایت</BaseButton>
+        <BaseStepInput v-model="otp" :length="4" />
+        <BaseButton :loading="loading" @click="login" class="w-full mt-2">ثبت و ورود به سایت</BaseButton>
+        <BaseButton @click="authStore.changeStep('phoneNumber')" color="info" outline class="w-full">ویرایش شماره
+        </BaseButton>
       </div>
     </Transition>
   </div>
@@ -23,7 +25,7 @@
 <script lang="ts" setup>
 import { Form } from 'vee-validate';
 import * as Yup from 'yup'
-import { checkPhone } from '~/services/auth.service';
+import { CheckOtp, checkPhone } from '~/services/auth.service';
 const schema = Yup.object().shape({
   //@ts-ignore
   phoneNumber: Yup.string().phoneNumber().required()
@@ -33,19 +35,29 @@ const schema = Yup.object().shape({
 const authStore = useAuthStore();
 const toast = useToast();
 const router = useRouter();
-const password = ref('');
 const loading = ref(false);
-
+const otp = ref('');
 const validate = async () => {
   loading.value = true;
   var res = await checkPhone(authStore.phoneNumber);
   if (res.isSuccess) {
     authStore.changeStep('code');
   }
+  loading.value=false;
 }
-const login = () => {
-  router.push('/panel');
-  authStore.isOpenModal = false;
+const login = async () => {
+  loading.value=true;
+  var res = await CheckOtp(authStore.phoneNumber, otp.value);
+  if (res.isSuccess) {
+    toast.showToast("ورود با موفقیت انجام شد");
+    authStore.setToken(res.data);
+    authStore.isOpenModal = false;
+    router.push('/panel');
+  }else{
+    toast.showToast("کد نامعتبر است",ToastType.error)
+  }
+  loading.value=false;
+
 }
 </script>
 

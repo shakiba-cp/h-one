@@ -154,7 +154,7 @@ body.modal-open {
 
 
 .modal__body  {
-    max-height: 70svh;
+    max-height: 85svh;
     overflow-y: auto;
     overflow-x: hidden;
     margin-bottom: 2rem;
@@ -170,6 +170,9 @@ body.modal-open {
     flex-shrink: 0;
     overflow: auto;
 
+    &.default {
+        width: 668px;
+    }
     &.sm {
         width: 558px;
     }
@@ -273,7 +276,7 @@ body.modal-open {
 }
 
 .modal__body {
-    padding: 2rem 2rem 0rem 2rem;
+    padding: 1rem 2rem 0rem 2rem;
     overflow-x: inherit;
 }
 

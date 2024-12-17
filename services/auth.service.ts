@@ -15,7 +15,7 @@ export const SendOtp = (phone: string) => {
   });
 };
 export const CheckOtp = (phone: string, otp: string) => {
-  return CustomFetch("/auth/send-otp", {
+  return CustomFetch<string>("/auth/check-otp", {
     method: "POST",
     body: {
       phone,

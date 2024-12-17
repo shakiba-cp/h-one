@@ -148,7 +148,7 @@ defineProps({
   }
 
   &.btn-outline {
-    @apply border border-primary;
+    @apply border-primary;
     color: var(--color-primary);
   }
 
@@ -170,7 +170,7 @@ defineProps({
   }
 
   &.btn-outline {
-    @apply border border-darkSecondary hover:bg-opacity-80 hover:bg-gray-100 dark:hover:bg-darkSecondary dark:border-lightSecondary;
+    @apply border-darkSecondary hover:bg-opacity-80 hover:bg-gray-100 dark:hover:bg-darkSecondary dark:border-lightSecondary;
 
 
   }
@@ -205,10 +205,12 @@ defineProps({
 
 .btn-green {
   @apply bg-green-700 text-white;
+
   &:hover {
     opacity: 0.6;
   }
 }
+
 .loading {
   pointer-events: none;
 }
@@ -225,28 +227,33 @@ defineProps({
 
 .btn-outline {
   background: transparent !important;
+
   &.btn-gray {
     border-color: #e5ebf6;
   }
+
   &.btn-danger {
     border-color: var(--color-error);
     color: var(--color-error);
   }
+
   &.btn-info {
     border-color: #2094f3;
     color: #2094f3;
   }
+
   &.btn-orange {
     border-color: #ff9900;
     color: #ffa114;
   }
+
   &:hover {
     opacity: 0.8;
   }
 }
 
 .btn-sm {
-  @apply  px-2 py-1 rounded-sm sm:p-2;
+  @apply px-2 py-1 rounded-sm sm:p-2;
 }
 
 .btn-lg {

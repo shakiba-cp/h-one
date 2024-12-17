@@ -5,8 +5,8 @@
       <div class="flex md:flex-col md:justify-center md:text-center gap-2 items-center">
         <img src="/iamges/avatars/1.svg" class="w-[50px] h-[50px] rounded" />
         <div>
-          <p>محمد اشرافی</p>
-          <p class="text-muted">موجودی: ۰ تومان</p>
+          <p>{{ authStore.userData?.name }}</p>
+          <!-- <p class="text-muted">موجودی: ۰ تومان</p> -->
         </div>
       </div>
     </div>
@@ -32,6 +32,7 @@
 </template>
 
 <script lang="ts" setup>
+const authStore = useAuthStore();
 
 
 </script>

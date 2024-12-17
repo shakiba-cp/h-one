@@ -1,5 +1,5 @@
 <template>
-  <header class="bg-white dark:bg-cardBg w-full pb-2">
+  <header class="bg-white pb-3 dark:bg-cardBg w-full ">
     <div class="container sm:hidden max-w-[95%] sm:!max-w-full sm:!w-full mx-auto px-4">
       <div class="flex items-center justify-between mb-3">
         <div class="flex  gap-3 items-center">
@@ -10,7 +10,7 @@
             </template>
           </BaseButton>
 
-          <BaseButton @click="authStore.openLoginModal">
+          <BaseButton @click="account">
             حساب کاربری
             <template #icon>
               <IconsUser />
@@ -31,34 +31,29 @@
       <nav class="flex justify-between items-stretch">
         <div class="w-fit flex items-center lg:gap-2 xl:gap-4">
           <ul class="flex gap-4">
-            <li v-for="(category, index) in categories" :key="category.id" class="dots-after relative group">
-              <button class="w-full h-full flex flex-col">
+            <li v-for="(category) in utilStore.categories" :key="category.id" class="relative group">
+              <nuxt-link :to="`/products?category=${category.id}`" class="w-full h-full flex flex-col">
                 <div class="flex gap-1 items-center">
-                  <span> {{ category.title }} </span>
-                  <img src="/icons/arrow-down.svg" v-show="category.childs.length > 0" />
+                  <span> {{ category.name }} </span>
+                  <IconsChevron position="down" v-if="category.subcategories.length > 0" />
                 </div>
-                <div class="dots-after-dots"><span></span><span></span><span></span></div>
-              </button>
-              <ul v-if="category.childs && category.childs.length"
-                class="absolute z-[200] translate-y-[32px] 
-                border border-borderColor duration-200 group-hover:transition-all hidden group-hover:flex bg-white rounded-b">
-                <li v-for="(child, childIndex) in category.childs" :key="child.id" :class="{
-                  'border-l border-borderColor': childIndex != category.childs.length - 1,
+              </nuxt-link>
+              <ul v-if="category.subcategories && category.subcategories.length > 0" class="absolute z-[200] top-6
+                border border-borderColor 
+                duration-200 group-hover:transition-all hidden group-hover:flex bg-cardBg rounded-b">
+                <li v-for="(child, childIndex) in category.subcategories" :key="child.id" :class="{
+                  'border-l border-borderColor': childIndex != category.subcategories.length - 1,
                 }" class="px-5 min-w-60 py-5 text-nowrap w-1/3">
                   <div class="mb-3">
-                    <strong class="font-bold mb-5">
-                      {{ child.title }}
-                    </strong>
+                    <nuxt-link :to="`/products?category=${child.id}`" class="font-bold mb-5">
+                      {{ child.name }}
+                    </nuxt-link>
                   </div>
-                  <ul v-if="child.childs && child?.childs?.length" class="space-y-3">
-                    <li v-for="(childSubcategories, childIndex) in child.childs" :key="child.id"
+                  <ul v-if="child.subcategories && child.subcategories.length > 0" class="space-y-3">
+                    <li v-for="(childSubcategories, childIndex) in child.subcategories" :key="childSubcategories.id"
                       class="py-1 px-2 text-nowrap">
-                      <nuxt-link to="/" class="flex relative">
-                        <span>
-                          <span class="dots-vertical-dots inset-y-0 right-0"></span>
-                          <span class="dots-vertical-dots inset-y-0 right-0"></span>
-                          <span class="dots-vertical-dots inset-y-0 right-0"></span></span>
-                        {{ childSubcategories.title }}
+                      <nuxt-link :to="`/products?category=${childSubcategories.id}`" class="flex relative">
+                        {{ childSubcategories.name }}
                       </nuxt-link>
                     </li>
                   </ul>
@@ -68,7 +63,7 @@
           </ul>
         </div>
         <div class="flex gap-2 items-center ">
-          <TheDarkModeSwicher/>
+          <TheDarkModeSwicher />
           <BaseButton color="secondary">
             اینستاگرام آی‌بولک
             <template #icon>
@@ -98,25 +93,19 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from "vue";
-import DATABASE from "@/assets/DATABASE.json";
-// Interface for categories
-interface ICategoryData {
-  title: string;
-  parentId: number | null;
-  id: number;
-  childs: ICategoryData[];
-};
-const router = useRouter();
-// Reactive state for categories and search
-const SearchState = ref(false);
-const categories = DATABASE["headerCategories"]
-const authStore = useAuthStore();
 
-// Toggle function for search state
-const toggleSearchState = () => {
-  SearchState.value = !SearchState.value;
-};
+const router = useRouter();
+const SearchState = ref(false);
+const authStore = useAuthStore();
+const utilStore = useUtilStore();
+
+const account = () => {
+  if (authStore.isLogin) {
+    router.push('/panel');
+  } else {
+    authStore.openLoginModal();
+  }
+}
 
 
 

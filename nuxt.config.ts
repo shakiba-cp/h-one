@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     "nuxt-swiper",
     "@nuxt/image",
     "@nuxtjs/color-mode",
-    "@pinia/nuxt"
+    "@pinia/nuxt",
   ],
   build: {
     transpile: ["vue-toastification"],
@@ -22,11 +22,11 @@ export default defineNuxtConfig({
       name: "layout",
       mode: "out-in",
     },
-    // head: {
-    //   htmlAttrs: {
-    //     dir: "rtl",
-    //   },
-    // },
+    head: {
+      htmlAttrs: {
+        dir: "rtl",
+      },
+    },
   },
   postcss: {
     plugins: {
@@ -38,5 +38,10 @@ export default defineNuxtConfig({
     classSuffix: "",
     fallback: "light",
     preference: "light",
+  },
+  image: {
+    quality: 100,
+    domains: ["https://run.khaliliexport.ir"],
+    alias: { shop: "https://run.khaliliexport.ir" },
   },
 });

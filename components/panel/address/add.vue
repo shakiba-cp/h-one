@@ -1,32 +1,73 @@
 <template>
-  <button class="new-address">
-    <IconsPlus />
-    افزودن آدرس
-  </button>
+   <Form :validation-schema="schema" @submit="sumbitForm" v-slot="{ meta }" :class="{ 'card-loading': loading }"
+      class="flex flex-wrap">
+      <div class="p-2 w-full">
+         <BaseInput v-model="data.name" name="title" label="عنوان آدرس" placeholder="عنوان را وارد کنید" />
+      </div>
+      <div class="p-2 w-1/2">
+         <BaseInput v-model="data.province" name="province" label="استان" placeholder="استان را وارد کنید" />
+      </div>
+      <div class="p-2 w-1/2">
+         <BaseInput v-model="data.city" name="city" label="شهر" placeholder="شهر را وارد کنید" />
+      </div>
+      <div class="p-2 w-full">
+         <BaseInput v-model="data.address" name="address" label="آدرس پستی" placeholder="آدرس را وارد کنید" />
+      </div>
+      <div class="p-2 w-full">
+         <BaseInput v-model="data.postal_code" number name="postal_code" label="کدپستی"
+            placeholder="کدپستی را وارد کنید" />
+      </div>
+      <div class="p-2 w-1/2">
+         <BaseInput v-model="data.receiver_name" name="receiver_name" label="نام گیرنده"
+            placeholder="نام  گیرنده را وارد کنید" />
+      </div>
+      <div class="p-2 w-1/2">
+         <BaseInput v-model="data.receiver_phone" name="receiver_phone" label="تلفن گیرنده"
+            placeholder="تلفن  گیرنده را وارد کنید" />
+      </div>
+      <div class="flex justify-end w-full">
+         <BaseButton :loading="loading" type="submit" :disabled="!meta.valid">ثبت آدرس</BaseButton>
+      </div>
+   </Form>
 </template>
 
 <script lang="ts" setup>
+import { Form } from 'vee-validate';
+import * as Yup from 'yup'
+import type { Address } from '~/models/Address';
+import { AddAddress } from '~/services/profile.service';
+const loading = ref(false);
+const toast = useToast();
+const emit = defineEmits(['success']);
+const data = reactive<Address>({
+   address: "",
+   address_id: undefined,
+   city: "",
+   name: "",
+   postal_code: "",
+   province: "",
+   receiver_name: "",
+   receiver_phone: "",
+   id: undefined
+});
+const schema = Yup.object().shape({
+   address: Yup.string().required().label("آدرس پستی").min(5, "آدرس نامعتبر است"),
+   city: Yup.string().required().label("شهر"),
+   title: Yup.string().required().label("عنوان"),
+   postal_code: Yup.string().required().label("کدپستی"),
+   province: Yup.string().required().label("استان"),
+   receiver_name: Yup.string().required().label("نام گیرنده"),
+   //@ts-ignore
+   receiver_phone: Yup.string().required().phoneNumber().label("تلفن گیرنده")
+})
 
-</script>
-
-<style scoped lang="scss">
-.new-address {
-  @apply flex rounded justify-center hover:opacity-45 items-center w-full h-full relative;
-  border: 10px dashed var(--border-color);
-  transition: opacity .15s ease-out;
-  &::before {
-    width: calc(100% + 16px);
-    height: calc(100% + 16px);
-    position: absolute;
-    top: -8px;
-    left: -8px;
-    border-radius: var(--border-radius);
-    display: block;
-    content: ' ';
-    pointer-events: none;
-    border: 9px solid ;
-    z-index: 1;
-    @apply border-cardBg;
-  }
+const sumbitForm = async () => {
+   loading.value = true;
+   var res = await AddAddress(data);
+   if (res.isSuccess) {
+      toast.showToast("آدرس با موفقیت اضافه شد");
+      emit('success');
+   }
+   loading.value = false;
 }
-</style>
+</script>
