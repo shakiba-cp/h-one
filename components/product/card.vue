@@ -1,22 +1,14 @@
 <template>
-  <nuxt-link to="/products/detail-slug" class="product">
+  <nuxt-link :to="`/products/detail-${item.id}`" class="product">
     <label v-if="item.off_percent != '0'"
       class="absolute top-5 left-0 rounded-r-full text-white bg-primary z-10 py-1 px-3">{{ item.off_percent }}
       درصد</label>
     <div class="product-image">
-      <div class="product-image-meta">
-        <span class="product-like" data-type="30" data-id="l83w5">
-          <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd"
-              d="M15.8743 4C19.0493 4 21.1783 6.98 21.1783 9.755C21.1783 15.388 12.3393 20 12.1783 20C12.0173 20 3.17834 15.388 3.17834 9.755C3.17834 6.98 5.30734 4 8.48234 4C10.2973 4 11.4893 4.905 12.1783 5.711C12.8673 4.905 14.0593 4 15.8743 4Z"
-              stroke="#323232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </span>
-      </div>
-      <base-img width="250px" height="400px" fit="contain" :src="`shop/${item.images[0].source}`" :alt="item.images[0].title" />
+      <base-img width="250px" height="400px" fit="contain" :src="`shop/${item.images[0].source}`"
+        :alt="item.images[0].title" />
       <div class="product-image-gallery">
         <div class="product-image-gallery-item" v-for="(image, i) in [...item.images].splice(-1)" :key="i">
-          <BaseImg width="80px"  :src="`shop/${image.source}`" :alt="image.title" />
+          <BaseImg width="80px" :src="`shop/${image.source}`" :alt="image.title" />
         </div>
       </div>
     </div>
@@ -50,7 +42,7 @@ const totalPrice = () => {
     return (+props.item.price).toLocaleString();
   }
   var discount = (+props.item.price * offPercent / 100)
-  return (+props.item.price-discount).toLocaleString();
+  return (+props.item.price - discount).toLocaleString();
 }
 </script>
 <style scoped lang="scss">

@@ -16,10 +16,10 @@
 
     <HomeBanners :banners="data?.data.cardsData!" />
     <template v-for="item in data?.data.categories" :key="item.title">
-      <HomeLatestMens :section-title="item.title" :slides="item.products" />
+      <HomeLatestMens :section-title="item.name" :slides="item.products" />
 
     </template>
-    <HomeBlogsSection :blog-items="blogs" key="4" />
+    <!-- <HomeBlogsSection :blog-items="blogs" key="4" /> -->
   </div>
 </template>
 
@@ -32,7 +32,6 @@ const stories = DATABASE["stories"] as [];
 const banners = DATABASE["banners"] as [];
 const blogs = DATABASE["blogs"] as [];
 const { data } = await useAsyncData("home", () => CustomFetch<HomePageDto>("/shop/main-page"));
-console.log(data.value?.data);
 definePageMeta({
   title: "صفحه اصلی"
 })

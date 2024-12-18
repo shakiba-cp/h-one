@@ -4,7 +4,7 @@ export interface HomePageDto {
   slidersData: Banner[];
   cardsData: Banner[];
   categories: {
-    title: string;
+    name: string;
     products: ProductItem[];
   }[];
   stories: Story[];

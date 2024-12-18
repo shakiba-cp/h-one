@@ -11,6 +11,7 @@ export interface Story {
   title: string;
 }
 export interface ProductItem {
+  id:number;
   name: string;
   is_special: number;
   off_percent: string;
