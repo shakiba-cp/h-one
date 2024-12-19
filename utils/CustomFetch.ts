@@ -40,6 +40,10 @@ export function CustomFetch<T>(
       };
     })
     .catch((e: FetchError) => {
+      var message = e.response._data.content?.messages;
+      if (e.response._data?.message) {
+        message = e.response._data?.message;
+      }
       var customResponse = {
         data: undefined,
         isSuccess: false,
@@ -47,23 +51,20 @@ export function CustomFetch<T>(
           appStatusCode:
             e.response._data?.metaData?.appStatusCode ??
             AppStatusCode.ServerError,
-          message: e.response._data?.message ?? "خطای سمت سرور",
+          message: message ?? "خطای سمت سرور",
         },
       } as ApiResponse<undefined>;
       switch (e.response.status) {
         case 400: {
-          customResponse.metaData.message =
-            e.response._data?.message ?? "اطلاعات نامعتبر است";
+          customResponse.metaData.message = message ?? "اطلاعات نامعتبر است";
           break;
         }
         case 401: {
-          customResponse.metaData.message =
-            e.response._data?.message ?? "دسترسی غیرمجاز";
+          customResponse.metaData.message = message ?? "دسترسی غیرمجاز";
           break;
         }
         case 404: {
-          customResponse.metaData.message =
-            e.response._data?.message ?? "اطلاعات نامعتبر است";
+          customResponse.metaData.message = message ?? "اطلاعات نامعتبر است";
           break;
         }
       }

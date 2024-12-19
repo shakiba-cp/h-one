@@ -7,7 +7,7 @@
       <base-img width="250px" height="400px" fit="contain" :src="`shop/${item.images[0].source}`"
         :alt="item.images[0].title" />
       <div class="product-image-gallery">
-        <div class="product-image-gallery-item" v-for="(image, i) in [...item.images].splice(-1)" :key="i">
+        <div class="product-image-gallery-item" v-for="(image, i) in [...item.images].splice(1)" :key="i">
           <BaseImg width="80px" :src="`shop/${image.source}`" :alt="image.title" />
         </div>
       </div>
@@ -15,7 +15,7 @@
     <div class="product-body w-full flex justify-between">
       <div class="product-body-right">
         <div class="d-flex align-items-center product-categories">
-          <!-- <span>{{ props.category }}/{{ props.parentCategory }}</span> -->
+          <span>{{ item.categories[0].name }}</span>
         </div>
         <strong class="product-title">{{ item.name }}</strong>
       </div>
@@ -114,6 +114,7 @@ const totalPrice = () => {
 
 .product {
   display: block;
+  position: relative;
 }
 
 .product-image-gallery {
@@ -168,8 +169,8 @@ const totalPrice = () => {
 
 
 .product.horizontal {
+  @apply bg-cardBg;
   display: flex;
-  background: #fff;
   gap: 1rem;
   padding: 1rem;
   border-radius: var(--border-radius);

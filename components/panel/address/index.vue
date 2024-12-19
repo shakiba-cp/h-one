@@ -7,7 +7,8 @@
          </template>
          <template v-else>
             <div class="p-2 w-1/2 sm:w-full" v-for="item in data" :key="item.id">
-               <div class="border border-borderColor rounded p-4 flex flex-col gap-3 ">
+               <div class="border border-borderColor rounded p-4 flex flex-col gap-3 "
+                  :class="{ 'border-green': model == item.id }">
                   <h5>عنوان : {{ item.name }}</h5>
                   <p>{{ item.address }}</p>
                   <div class="flex gap-2 items-center">
@@ -27,6 +28,8 @@
                      <p>{{ item.receiver_phone }}</p>
                   </div>
                   <div class="w-full justify-end flex gap-2">
+                     <BaseButton :disabled="model == item.id!" size="sm" color="green" @click="model = item.id!">انتخاب
+                        آدرس</BaseButton>
                      <BaseButton size="sm" @click="deleteAddress(item.id!)" outline>حذف</BaseButton>
                      <BaseButton @click="openEditModal(item)" size="sm" color="secondary">ویرایش</BaseButton>
                   </div>
@@ -58,6 +61,14 @@ const isOpenAddModal = ref(false);
 const isOpenEditAddModal = ref(false);
 const selectedAddress: Ref<Address | null> = ref(null);
 const toast = useToast();
+const model = defineModel({
+   type: Number,
+   default: 0,
+   required: false
+});
+const { selectable = false } = defineProps<{
+   selectable?: boolean
+}>();
 onMounted(async () => {
    await getData();
 });

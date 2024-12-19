@@ -14,8 +14,8 @@
       جستجو
     </a>
     <NuxtLink to="/cart" active-class="active">
-      <span class="absolute -top-1 left-1 text-h8 rounded-full flex items-center justify-center 
-      w-[20px] h-[20px] !bg-primary text-white">0</span>
+      <span v-if="utilStore.shopCartItems.length > 0" class="absolute -top-1 left-1 text-h8 rounded-full flex items-center justify-center 
+      w-[20px] h-[20px] !bg-primary text-white">{{ utilStore.shopCartItems.length }}</span>
       <IconsBasket color="black" />
       سبد خرید
     </NuxtLink>
@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts" setup>
-
+const utilStore = useUtilStore();
 </script>
 
 <style scoped lang="scss">

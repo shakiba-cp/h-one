@@ -2,7 +2,7 @@ import type { Banner, ProductItem } from "./Banner";
 import type { Category } from "./Category";
 
 export interface Product {
-  attributed: [];
+  attributes: {};
   colors: ProductColor[];
   categories: Category[];
   description: string;
@@ -12,7 +12,7 @@ export interface Product {
   offPercent: string;
   price: string;
   relatedProducts: ProductItem[];
-  sizingTable: [];
+  sizingTable: {};
 }
 export interface ProductColor {
   color_name: string;

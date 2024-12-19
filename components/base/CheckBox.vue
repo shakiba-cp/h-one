@@ -135,7 +135,7 @@ onMounted(() => {
 
 .checkbox-wrapper-45 .back {
   transform: rotateY(180deg);
-  background: var(--body-text-color);
+  background: black;
   text-align: center;
   color: #fff;
   line-height: 22px;

@@ -15,4 +15,5 @@ export interface FetchConfig {
   window?: null;
   retry?: number;
   baseURL?: string;
+  query?: Record<string, any>;
 }

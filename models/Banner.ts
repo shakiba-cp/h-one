@@ -11,10 +11,16 @@ export interface Story {
   title: string;
 }
 export interface ProductItem {
-  id:number;
+  id: number;
   name: string;
+  image: string;
   is_special: number;
   off_percent: string;
   price: string;
+  categoryName: string;
+  categories: {
+    id: number;
+    name: string;
+  }[];
   images: Banner[];
 }

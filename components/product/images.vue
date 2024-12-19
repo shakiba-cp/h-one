@@ -14,7 +14,7 @@
     <div v-else></div>
     <BaseModal modal-class="min-w-[968px] md:!min-w-[unset]" v-model="isOpenModal" title="گالری تصاویر">
       <div class="flex gap-2">
-        <div class="w-[45%] sm:w-full">
+        <div class="w-[40%] sm:w-full">
           <BaseCarousel @swiper="onSwiper" :items="props.data" :modules="[SwiperNavigation]" :navigation="{
             enabled: true
           }">

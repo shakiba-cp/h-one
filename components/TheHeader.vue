@@ -4,7 +4,10 @@
       <div class="flex items-center justify-between mb-3">
         <div class="flex  gap-3 items-center">
           <BaseButton to="/cart" outline color="secondary">
-            سبد خرید
+            <p>
+              سبد خرید <b v-if="utilStore.shopCartItems.length > 0" class="text-primary"
+                style="font-family: 'Courier New', Courier, monospace;">({{ utilStore.shopCartItems.length }})</b>
+            </p>
             <template #icon>
               <IconsBasket />
             </template>
@@ -32,7 +35,7 @@
         <div class="w-fit flex items-center lg:gap-2 xl:gap-4">
           <ul class="flex gap-4">
             <li v-for="(category) in utilStore.categories" :key="category.id" class="relative group">
-              <nuxt-link :to="`/products?category=${category.id}`" class="w-full h-full flex flex-col">
+              <nuxt-link :to="`/products/${category.id}`" class="w-full h-full flex flex-col">
                 <div class="flex gap-1 items-center">
                   <span> {{ category.name }} </span>
                   <IconsChevron position="down" v-if="category.subcategories.length > 0" />
@@ -45,14 +48,14 @@
                   'border-l border-borderColor': childIndex != category.subcategories.length - 1,
                 }" class="px-5 min-w-60 py-5 text-nowrap w-1/3">
                   <div class="mb-3">
-                    <nuxt-link :to="`/products?category=${child.id}`" class="font-bold mb-5">
+                    <nuxt-link :to="`/products/${child.id}`" class="font-bold mb-5">
                       {{ child.name }}
                     </nuxt-link>
                   </div>
                   <ul v-if="child.subcategories && child.subcategories.length > 0" class="space-y-3">
                     <li v-for="(childSubcategories, childIndex) in child.subcategories" :key="childSubcategories.id"
                       class="py-1 px-2 text-nowrap">
-                      <nuxt-link :to="`/products?category=${childSubcategories.id}`" class="flex relative">
+                      <nuxt-link :to="`/products/${childSubcategories.id}`" class="flex relative">
                         {{ childSubcategories.name }}
                       </nuxt-link>
                     </li>

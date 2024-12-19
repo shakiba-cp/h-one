@@ -1,12 +1,12 @@
 <template>
   <div>
     <TheBreadcrumb :items="[{
-      title: 'محصولات',
+      title: 'محصولات ' + data?.data.categoryName,
     }]" />
     <div class="container">
       <div class="flex gap-5 relative">
         <aside class="w-[25%] md:w-[35%] sm:!hidden sticky h-fit top-2 flex flex-col gap-4">
-          <div class="card">
+          <!-- <div class="card">
             <div class="header">
               <p class=" title">فیلتر‌های اعمال‌شده</p>
               <button class="text-primary">حذف فیلترها</button>
@@ -19,8 +19,8 @@
                 <IconsRemove width="14" height="14" />
               </button>
             </div>
-          </div>
-          <div class="card">
+          </div> -->
+          <!-- <div class="card">
             <div class="header">
               <p class="title">فصل مناسب</p>
             </div>
@@ -28,13 +28,13 @@
               <BaseCheckBox label="پاییز" name="test" />
               <BaseCheckBox label="زمستان" name="test" />
             </div>
-          </div>
+          </div> -->
           <div class="card">
             <div class="header">
               <p class="title">محدوده قیمت</p>
             </div>
             <div class="flex flex-col gap-4 w-full pt-4">
-              <BaseRangeSlider style="width: 100%" :min="0" :max="10000000" :step="10000" v-model="data" />
+              <BaseRangeSlider style="width: 100%" :min="0" :max="10000000" :step="10000" v-model="priceData" />
               <div class="flex justify-between gap-3">
                 <div class="flex gap-2 items-center">
                   <p>از</p>
@@ -55,7 +55,6 @@
               <button @click="selectedTab = 0" :class="{ 'active': selectedTab == 0 }">جدیدترین</button>
               <button @click="selectedTab = 1" :class="{ 'active': selectedTab == 1 }">ارزان‌ترین</button>
               <button @click="selectedTab = 2" :class="{ 'active': selectedTab == 2 }">گران‌ترین</button>
-              <button @click="selectedTab = 3" :class="{ 'active': selectedTab == 3 }">محبوب‌ترین</button>
             </div>
             <div class="flex gap-3">
               <button @click="showType = 1" class="rounded-sm p-2 bg-transparent"
@@ -77,18 +76,19 @@
             <div class="p-2" :class="[
               { 'w-1/2 md:w-full': showType == 2 },
               { 'w-1/4 md:w-1/3 sm:!w-1/2': showType == 1 }
-            ]" v-for="item in products" :key="item.id">
-              <ProductCard :title="item.title" :category="item.category" :image-src="item.imageSrc" :price="item.price"
-                :image-gallery="item.imageGallery" :parent-category="item.parentCategory"
-                :class="{ 'horizontal': showType == 2 }" />
+            ]" v-for="item in products">
+              <ProductCard :item="item" :class="{ 'horizontal': showType == 2 }" />
             </div>
 
           </div>
-          <BasePagination :filter-result="{
+          <div class="w-full flex justify-center items-center">
+            <BaseButton>مشاهده بیشتر ...</BaseButton>
+          </div>
+          <!-- <BasePagination :filter-result="{
             startPage: 18,
             endPage: 24,
             pageCount: 28
-          }" />
+          }" /> -->
         </section>
       </div>
     </div>
@@ -96,27 +96,54 @@
 </template>
 
 <script lang="ts" setup>
-import DATABASE from "@/assets/DATABASE.json";
+import type { ProductItem } from '~/models/Banner';
 
 const start = ref("0")
 const end = ref("10000000")
-const data = ref(["0", "10000000"]);
+const priceData = ref(["0", "10000000"]);
 const selectedTab = ref(0);
 const showType = ref(1);
+const route = useRoute();
+const sortType = ref("created_at");
+const sortDirection = ref("desc");
 
-const products = ref(DATABASE["products"]);
-watch(data, () => {
-  start.value = data.value[0].toString();
-  end.value = data.value[1].toString();
-});
-watch(showType, () => {
-  if (showType.value == 1) {
-    products.value = array_move(products.value, 3, 0)
-  } else {
-    products.value = array_move(products.value, 0, 3)
+const { data, refresh } = await useAsyncData("products", () => CustomFetch<{
+  categoryName: string,
+  pagination: {},
+  products: ProductItem[]
+}>("/shop/products", {
+  method: "GET",
+  query: {
+    category: route.params.slug[0],
+    sort: sortType.value,
+    type: sortDirection.value,
   }
+}));
+const products: Ref<ProductItem[]> = ref(data.value?.data.products ?? []);
 
+watch(priceData, () => {
+  start.value = priceData.value[0].toString();
+  end.value = priceData.value[1].toString();
 });
+watch(() => route.params, () => {
+  refresh();
+});
+watch(data, () => {
+  products.value = data.value?.data.products ?? [];
+})
+watch(selectedTab, (val) => {
+  if (val == 0) {
+    sortType.value = "created_at";
+    sortDirection.value = "desc";
+  } else if (val == 1) {
+    sortType.value = "price";
+    sortDirection.value = "asc";
+  } else if (val == 2) {
+    sortType.value = "price";
+    sortDirection.value = "desc";
+  }
+  refresh();
+})
 definePageMeta({
   title: "محصولات"
 })

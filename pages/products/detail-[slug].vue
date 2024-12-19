@@ -14,13 +14,13 @@
       {
          title: title
       }]" />
-      <ProductSizeTable v-model="isOpenSizeModal" />
+      <ProductSizeTable v-model="isOpenSizeModal" :data="product.sizingTable"/>
 
       <div class="container">
          <div class="card flex sm:flex-col justify-between gap-6">
             <div class="w-[45%] sm:w-full">
                <ProductImages :data="[...product.images]
-               .filter(f=>f.color_name==selectedColor?.color_name)??[]"/>
+                  .filter(f => f.color_name == selectedColor?.color_name) ?? []" />
             </div>
             <div class="w-[55%] sm:w-full">
                <h1 class="text-h2 sm:text-h4">{{ title }}</h1>
@@ -47,9 +47,10 @@
                   <div v-if="selectedColor">
                      <h6 class="mt-8 text-h5 font-bold">سایز (حروفی) : </h6>
                      <div class="mt-4 flex-wrap flex gap-3 " v-auto-animate>
-                        <label :for="item" v-for="item in Object.keys(selectedColor.color_sizes)" :key="item" class="px-4 py-3 border 
+                        <label :for="item" @click="selectedSize = item"
+                           v-for="item in Object.keys(selectedColor.color_sizes)" :key="item" class="px-4 py-3 border 
                   border-secondary cursor-pointer
-                  rounded-sm size " :class="{ 'active': item == 'M' }">
+                  rounded-sm size " :class="{ 'active': selectedSize == item }">
                            <BaseCheckBox name="size" :input-id="item" :value="item" type="radio" :label="item" />
                         </label>
                      </div>
@@ -59,7 +60,7 @@
                <div class="flex flex-col items-end mt-5 ">
                   <div class="fixed w-full left-0 items-center bottom-[4.45rem] border-b 
                      border-secondary z-10 justify-between hidden sm:flex bg-cardBg shadow py-3 px-3">
-                     <BaseButton>افزودن به سبد خرید</BaseButton>
+                     <BaseButton @click="addToShopCart">افزودن به سبد خرید</BaseButton>
                      <div>
                         <p v-if="product.offPercent != '0'" class="text-left"><del class="text-h6 ">{{
                            Number(product.price).toLocaleString() }} تومان</del></p>
@@ -76,7 +77,7 @@
                         </template>
                         جدول سایزبندی
                      </BaseButton>
-                     <BaseButton class="sm:!hidden">
+                     <BaseButton @click="addToShopCart" class="sm:!hidden">
                         <template #icon>
                            <IconsBasket />
                         </template>
@@ -90,79 +91,40 @@
          </div>
          <div class="flex   tabs items-center gap-4">
             <button @click="selectedTab = 0" :class="{ 'active': selectedTab == 0 }">مشخصات محصول</button>
-            <button @click="selectedTab = 1" :class="{ 'active': selectedTab == 1 }">
-               دیدگاه کاربران</button>
+            <!-- <button @click="selectedTab = 1" :class="{ 'active': selectedTab == 1 }">
+               دیدگاه کاربران</button> -->
          </div>
          <div class=" card" v-if="selectedTab == 0">
-            <table class="table table-striped mb-5">
+            <table class="table table-striped mb-5" v-if="product.attributes">
                <tbody>
-                  <tr>
-                     <td>مدل یقه</td>
+                  <tr v-for="(item, index) in Object.keys(product.attributes)" :key="index">
+                     <td>{{ item }}</td>
                      <td>
-                        ایستاده
-                     </td>
-                  </tr>
-
-                  <tr>
-                     <td>مدل آستین</td>
-                     <td>
-                        بلند
-                     </td>
-                  </tr>
-
-                  <tr>
-                     <td>تنخور</td>
-                     <td>
-                        نرمال
-                     </td>
-                  </tr>
-
-                  <tr>
-                     <td>جنس</td>
-                     <td>
-                        غواصی
-                     </td>
-                  </tr>
-
-                  <tr>
-                     <td>موارد استفاده</td>
-                     <td>
-                        اسپرت
-                     </td>
-                  </tr>
-
-                  <tr>
-                     <td>فصل مناسب</td>
-                     <td>
-                        چهار فصل
+                        {{ product.attributes[item] }}
                      </td>
                   </tr>
                </tbody>
             </table>
-            <section class="single-product-content">
-               <div class="tinymce-content" data-editor="true">جنس ست غواصی فلامنت مات با کیفیت است . تنخور شلوار بگ
-                  میباشد.
-                  سایزبندی M و L و XL مناسب برای 38 تا 46</div>
-               <div class="tinymce-content" data-editor="true">*ست مشابه ست طرح اویشو میباشد*</div>
+            <section class="single-product-content" v-html="product.description">
             </section>
          </div>
          <div class="card" v-else>
             <h4>نظرات</h4>
          </div>
-         <section class="mt-5">
-            <!-- <HomeLatestMens section-title="محصولات مرتبط" :slides="products"/> -->
+         <section class="mt-5" v-if="product.relatedProducts">
+            <HomeLatestMens section-title="محصولات مرتبط" :slides="product.relatedProducts" />
          </section>
       </div>
    </div>
 </template>
 <script setup lang="ts">
 import type { Product, ProductColor } from '~/models/Product';
+import { AddToCart } from '~/services/shopCart.service';
 
 const router = useRouter();
 const route = useRoute();
 const productId = route.params.slug;
 const toast = useToast();
-
 const { data, status } = await useAsyncData(`product-${productId}`,
    () => CustomFetch<Product>(`/shop/show-products/${productId}`));
 if (!data.value?.data) {
@@ -177,8 +139,12 @@ const product = data.value!.data;
 const isOpenSizeModal = ref(false);
 const title = product.name;
 route.meta.title = title;
-const selectedTab = ref(1);
+const selectedTab = ref(0);
 const selectedColor: Ref<ProductColor | null> = ref(product.colors[0]);
+const size = Object.keys(selectedColor.value?.color_sizes ?? {})[0];
+const selectedSize = ref(size)
+const utilStore = useUtilStore();
+
 const totalPrice = computed(() => {
    var price = Number(product.price);
    if (product.offPercent == "0") {
@@ -186,7 +152,18 @@ const totalPrice = computed(() => {
    }
    var discount = (price * +product.offPercent / 100)
    return (price - discount).toLocaleString();
-})
+});
+const addToShopCart = async () => {
+   if (selectedSize.value) {
+      //@ts-ignore
+      var res = await AddToCart(selectedColor.value?.color_sizes[selectedSize.value]);
+      if (res.isSuccess) {
+         toast.showToast("محصول به سبد خرید اضافه شد")
+         await utilStore.updateShopCartItems();
+
+      }
+   }
+}
 </script>
 <style scoped lang="scss">
 .tabs {
