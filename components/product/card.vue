@@ -125,7 +125,7 @@ const totalPrice = () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: .5rem;
   padding: 2rem;
   transform: translateY(4px);
   opacity: 0;
