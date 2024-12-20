@@ -1,6 +1,5 @@
 <template>
    <div>
-
       <Head>
          <Title>{{ title }}</Title>
       </Head>
@@ -19,19 +18,19 @@
       <div class="container">
          <div class="card flex sm:flex-col justify-between gap-6">
             <div class="w-[45%] sm:w-full">
-               <ProductImages :data="[...product.images]
-                  .filter(f => f.color_name == selectedColor?.color_name) ?? []" />
+               <ProductImages :data="[...product.images].splice(0,4)" :selected="selectedColor?.color_name"/>
             </div>
             <div class="w-[55%] sm:w-full">
                <h1 class="text-h2 sm:text-h4">{{ title }}</h1>
-               <nuxt-link to="/products/test" class="text-muted">بلوز/شومیز</nuxt-link>
+               <nuxt-link :to="`/products/` + product.categories[0].id" class="text-muted">{{ product.categories[0].name
+                  }}</nuxt-link>
                <BaseAlert color="secondary" class="sm:hidden">
                   با توجه به تفاوت رنگ در صفحه نمایش و واقعیت، ممکن است رنگ محصولات تا ۲۰٪ متغیر باشد
                </BaseAlert>
                <h6 class="mt-5 text-h5 font-bold">رنگ : </h6>
-               <div class="mt-4 flex-grow flex gap-3 ">
+               <div class="mt-4 flex-grow flex-wrap flex gap-3 ">
                   <div class="w-[70px]" v-for="item in product.colors" :key="item.color_name">
-                     <div class="color-selection " @click="selectedColor = item"
+                     <div class="color-selection" @click="selectedColor = item"
                         :class="{ 'active': selectedColor?.color_name == item.color_name }">
                         <div :style="{ backgroundColor: item.color_hex }"
                            class="rounded-t flex justify-center items-center px-4 py-3">

@@ -18,8 +18,10 @@ export const useAuthStore = defineStore("auth", () => {
     return cookie.value;
   };
   const isLogin = computed(() => {
-    var cookie = getAccessToken();
-    return cookie != null && cookie != "";
+    var cookie = useCookie("s-access-token", {
+      watch: true,
+    });
+    return cookie.value != null && cookie.value != "";
   });
   const setToken = (token: string): boolean => {
     var cookie = useCookie("s-access-token", {

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <NuxtLoadingIndicator />
     <NuxtLayout>
       <NuxtPage />
       <TheBottomNavigation />
@@ -20,7 +21,7 @@ const utilStore = useUtilStore();
 await utilStore.initCategories();
 onMounted(async () => {
   authStore.setCurrentUser();
-  if(authStore.isLogin){
+  if (authStore.isLogin) {
     await utilStore.updateShopCartItems();
   }
 })

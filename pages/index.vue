@@ -1,6 +1,6 @@
 <template>
   <div class="container max-w-[95%] mx-auto space-y-[1.5rem]">
-    <HomeStories :data="data?.data.stories ?? []" />
+    <HomeStories v-if="(data?.data.stories.length??0)>0" :data="data?.data.stories ?? []" />
     <BaseCarousel class="single-slider rounded" :autoplay="{
       delay: 2000,
       pauseOnMouseEnter: true

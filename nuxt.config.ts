@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   devtools: { enabled: false },
   css: ["~/assets/css/main.scss", "~/assets/css/custom.scss"],
+
   modules: [
     "@formkit/auto-animate/nuxt",
     "nuxt-swiper",
@@ -26,6 +27,7 @@ export default defineNuxtConfig({
       htmlAttrs: {
         dir: "rtl",
       },
+      title: "فروشگاه اینترنتی H1",
     },
   },
   postcss: {

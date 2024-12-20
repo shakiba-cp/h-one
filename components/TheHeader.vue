@@ -28,7 +28,7 @@
 
         </div>
         <nuxt-link to="/">
-          <img  src="/logo.png" class="h-12" alt="h1 mod" />
+          <img src="/logo.png" class="h-12" alt="h1 mod" />
         </nuxt-link>
       </div>
       <nav class="flex justify-between items-stretch">
@@ -48,7 +48,7 @@
                   'border-l border-borderColor': childIndex != category.subcategories.length - 1,
                 }" class="px-5 min-w-60 py-3 text-nowrap w-1/3">
                   <div class="">
-                    <nuxt-link :to="`/products/${child.id}`" >
+                    <nuxt-link :to="`/products/${child.id}`">
                       {{ child.name }}
                     </nuxt-link>
                   </div>
@@ -86,10 +86,12 @@
       </nav>
     </div>
     <div class="hidden items-center sm:flex justify-between w-full">
-      <button class="flex items-center gap-3" @click="back">
-        <IconsChevron position="right" width="16" height="16" />
+      <div class="flex items-center gap-2">
+        <button v-if="canGoBack" class="flex items-center gap-3" @click="$router.back">
+          <IconsChevron position="right" width="16" height="16" />
+        </button>
         <p class="title">{{ $route.meta.title }}</p>
-      </button>
+      </div>
       <img src="/logo.png" alt="logo" />
     </div>
   </header>
@@ -101,6 +103,7 @@ const router = useRouter();
 const SearchState = ref(false);
 const authStore = useAuthStore();
 const utilStore = useUtilStore();
+const canGoBack = ref(false);
 
 const account = () => {
   if (authStore.isLogin) {
@@ -109,7 +112,9 @@ const account = () => {
     authStore.openLoginModal();
   }
 }
-
+watch(router.currentRoute,()=>{
+  canGoBack.value=true;
+})
 
 
 
@@ -125,9 +130,9 @@ watch(SearchState, (newVal) => {
     document.body.classList.remove("category-page");
   }
 });
-const back = () => {
-  router.back();
-}
+onMounted(() => {
+  canGoBack.value = window.history.state && window.history.state.back;
+})
 </script>
 <style scoped lang="scss">
 @media screen and (max-width:768px) {

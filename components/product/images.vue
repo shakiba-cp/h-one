@@ -9,7 +9,8 @@
         </div>
       </div>
       <BaseImg @click="isOpenModal = true" width="500px" :alt="data[0].title"
-        class="main sm:!w-full border border-secondary rounded" :src="`shop/${data[0].sourece}`" />
+        class="main sm:!w-full border border-secondary rounded"
+        :src="selectedImage" />
     </div>
     <div v-else></div>
     <BaseModal modal-class="min-w-[968px] md:!min-w-[unset]" v-model="isOpenModal" title="گالری تصاویر">
@@ -40,8 +41,10 @@
 <script lang="ts" setup>
 import type { ProductImage } from '~/models/Product';
 const isOpenModal = ref(false);
+
 const props = defineProps<{
-  data: ProductImage[]
+  data: ProductImage[],
+  selected: string
 }>();
 const swiper: Ref<any> = ref(null);
 const changeImage = (index: number) => {
@@ -52,6 +55,14 @@ const onSwiper = (s: any) => {
     swiper.value = s;
   }
 }
+const selectedImage = computed(() => {
+  if (props.selected) {
+    var selectedColorImage = props.data.filter(f => f.color_name == props.selected)[0];
+    return selectedColorImage ? "shop/" + selectedColorImage.sourece : "shop/" + props.data[0].sourece;
+  } else {
+    return "shop/" + props.data[0].sourece
+  }
+})
 </script>
 
 <style scoped lang="scss">
