@@ -7,7 +7,7 @@
           {{ sectionTitle }}
         </h3>
       </div>
-      <BaseButton class="sm:border-none sm:!p-0 sm:!text-primary" :outline="true" color="secondary"> مشاهده همه </BaseButton>
+      <BaseButton to="/products" class="sm:border-none sm:!p-0 sm:!text-primary" :outline="true" color="secondary"> مشاهده همه </BaseButton>
     </div>
     <div class="relative sm:w-[109%] sm:-right-[4.1%] sm:px-r">
       <BaseCarousel :breakpoints="breakpoints" :items="items" :space-between="10" :modules="[SwiperNavigation]"

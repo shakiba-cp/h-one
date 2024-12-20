@@ -13,14 +13,14 @@
     </div>
     <div v-else></div>
     <BaseModal modal-class="min-w-[968px] md:!min-w-[unset]" v-model="isOpenModal" title="گالری تصاویر">
-      <div class="flex gap-2">
+      <div class="flex gap-2 sm:flex-wrap">
         <div class="w-[40%] sm:w-full">
           <BaseCarousel @swiper="onSwiper" :items="props.data" :modules="[SwiperNavigation]" :navigation="{
             enabled: true
           }">
             <template #item="{ item }">
               <BaseImg width="400px" height="600px" fit="contain" :alt="item!.title"
-                class="h-[500px] sm:!w-full border border-secondary rounded" :src="`shop/${item!.sourece}`" />
+                class="h-[500px] sm:h-auto sm:!w-full border border-secondary rounded" :src="`shop/${item!.sourece}`" />
             </template>
           </BaseCarousel>
         </div>

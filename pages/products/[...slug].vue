@@ -1,7 +1,10 @@
 <template>
   <div>
-    <TheBreadcrumb :items="[{
+    <TheBreadcrumb v-if="!route.query.search" :items="[{
       title: 'محصولات ' + data?.data.categoryName,
+    }]" />
+    <TheBreadcrumb v-else :items="[{
+      title: 'جستجو برای  ' + `''${route.query.search}''`,
     }]" />
     <div class="container">
       <div class="flex gap-5 relative">
@@ -36,7 +39,7 @@
             ]" v-for="item in products">
               <ProductCard :item="item" :class="{ 'horizontal': showType == 2 }" />
             </div>
-
+            <BaseAlert v-if="status != 'pending' && products.length == 0" color="primary">محصولی یافت نشد</BaseAlert>
           </div>
           <!-- <BasePagination :filter-result="{
             startPage: 18,
@@ -60,8 +63,7 @@ const showType = ref(1);
 const route = useRoute();
 const sortType = ref("created_at");
 const sortDirection = ref("desc");
-
-const { data, refresh } = await useAsyncData("products", () => CustomFetch<{
+const { data, refresh, status } = await useAsyncData("products", () => CustomFetch<{
   categoryName: string,
   pagination: {},
   products: ProductItem[]
@@ -71,6 +73,7 @@ const { data, refresh } = await useAsyncData("products", () => CustomFetch<{
     category: route.params.slug[0],
     sort: sortType.value,
     type: sortDirection.value,
+    search: route.query.search
   }
 }));
 const products: Ref<ProductItem[]> = ref(data.value?.data.products ?? []);
