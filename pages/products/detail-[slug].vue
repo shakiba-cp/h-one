@@ -18,7 +18,7 @@
       <div class="container">
          <div class="card flex sm:flex-col justify-between gap-6">
             <div class="w-[45%] sm:w-full">
-               <ProductImages :data="[...product.images].splice(0,4)" :selected="selectedColor?.color_name"/>
+               <ProductImages :data="[...product.images]" :selected="selectedColor?.color_name"/>
             </div>
             <div class="w-[55%] sm:w-full">
                <h1 class="text-h2 sm:text-h4">{{ title }}</h1>

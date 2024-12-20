@@ -2,7 +2,7 @@
   <div>
     <div class="gallary items-center flex gap-2 sm:flex-col-reverse" v-if="data.length > 0">
       <div class="flex flex-col sm:flex-row gap-2 justify-between">
-        <div @click="isOpenModal = true" v-for="(item, index) in [...props.data]" :key="index"
+        <div @click="isOpenModal = true" v-for="(item, index) in [...props.data].splice(0,4)" :key="index"
           class="border cursor-pointer rounded border-borderColor p-2" :class="{ 'more': index == 3 }">
           <BaseImg width="150px" height="150px" class="item " fit="contain" :src="`shop/${item.sourece}`" alt="1" />
           <IconsMoreHoriz v-if="index == 3" />
@@ -25,7 +25,7 @@
             </template>
           </BaseCarousel>
         </div>
-        <div class="w-[50%] gallary sm:w-full">
+        <div class="w-[60%] gallary sm:w-full">
           <div class="flex flex-wrap gap-2 ">
             <div @click="changeImage(index)" v-for="(item, index) in [...props.data]" :key="index"
               class="border cursor-pointer w-fit rounded border-borderColor p-2">
@@ -75,7 +75,7 @@ const selectedImage = computed(() => {
   }
 
   .item {
-    @apply w-[100px] md:h-[70px] rounded-sm h-[90px] sm:w-[70px];
+    @apply w-[80px] md:h-[60px] rounded-sm h-[80px] sm:w-[60px];
   }
 
   .more {

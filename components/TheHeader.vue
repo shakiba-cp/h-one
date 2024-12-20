@@ -112,8 +112,8 @@ const account = () => {
     authStore.openLoginModal();
   }
 }
-watch(router.currentRoute,()=>{
-  canGoBack.value=true;
+watch(router.currentRoute, () => {
+  checkBack();
 })
 
 
@@ -131,8 +131,13 @@ watch(SearchState, (newVal) => {
   }
 });
 onMounted(() => {
-  canGoBack.value = window.history.state && window.history.state.back;
+  checkBack();
 })
+const checkBack = () => {
+  const referrer = document.referrer;
+  const currentDomain = window.location.origin;
+  canGoBack.value = (referrer != undefined && referrer.startsWith(currentDomain));
+}
 </script>
 <style scoped lang="scss">
 @media screen and (max-width:768px) {

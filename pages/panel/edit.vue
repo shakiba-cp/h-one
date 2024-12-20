@@ -9,7 +9,8 @@
 
 <script lang="ts" setup>
 definePageMeta({
-  layout: "panel"
+  layout: "panel",
+  title: "ویرایش حساب"
 });
 </script>
 
