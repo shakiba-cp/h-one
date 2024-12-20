@@ -1,9 +1,5 @@
 <template>
   <div>
-    <a style="margin-top: 0 !important;" href="https://ibolak.com/link/redirect/em5zb" target="_blank">
-      <img src="https://ibolak.com/storage/image/2024/11/1732174396-9WD9qlaKTKjX0CuR.gif" class="w-full"
-        alt="بنر هدر تخفیف اسنپ پی">
-    </a>
     <NuxtLayout>
       <NuxtPage />
       <TheBottomNavigation />
@@ -24,7 +20,8 @@ const utilStore = useUtilStore();
 await utilStore.initCategories();
 onMounted(async () => {
   authStore.setCurrentUser();
-  await utilStore.updateShopCartItems();
-
+  if(authStore.isLogin){
+    await utilStore.updateShopCartItems();
+  }
 })
 </script>

@@ -3,7 +3,7 @@
     <div
       class="avatar shadow relative py-8 px-4 z-10 bg-white dark:bg-cardBg w-[90%] mx-auto rounded flex justify-center">
       <div class="flex md:flex-col md:justify-center md:text-center gap-2 items-center">
-        <img src="/iamges/avatars/1.svg" class="w-[50px] h-[50px] rounded" />
+        <img src="/images/avatars/1.png" class="w-[50px] h-[50px] rounded" />
         <div>
           <p>{{ authStore.userData?.name }}</p>
           <!-- <p class="text-muted">موجودی: ۰ تومان</p> -->
@@ -26,6 +26,15 @@
       <NuxtLink to="/panel/addresses#content" class="side-link">
         <IconsAddress />
         آدرس‌ها
+      </NuxtLink>
+      <NuxtLink @click="authStore.logOut" to="/" class="side-link">
+        <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 8.5V16.5" stroke="#323232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M12 3.5V3.5C7.029 3.5 3 7.529 3 12.5V12.5C3 17.471 7.029 21.5 12 21.5V21.5C16.971 21.5 21 17.471 21 12.5V12.5C21 7.529 16.971 3.5 12 3.5Z"
+            stroke="#323232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        خروج از حساب
       </NuxtLink>
     </div>
   </aside>

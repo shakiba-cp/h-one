@@ -5,50 +5,7 @@
     }]" />
     <div class="container">
       <div class="flex gap-5 relative">
-        <aside class="w-[25%] md:w-[35%] sm:!hidden sticky h-fit top-2 flex flex-col gap-4">
-          <!-- <div class="card">
-            <div class="header">
-              <p class=" title">فیلتر‌های اعمال‌شده</p>
-              <button class="text-primary">حذف فیلترها</button>
-            </div>
-            <div class="flex gap-2 flex-wrap mt-2">
-              <button :key="item"
-                class="flex min-w-fit hover:text-primary transition-all items-center gap-2 rounded border border-borderColor px-3 py-2"
-                v-for="item in ['رایحه: شیرین', 'فصل: زمستان', 'سایز : xl']">
-                {{ item }}
-                <IconsRemove width="14" height="14" />
-              </button>
-            </div>
-          </div> -->
-          <!-- <div class="card">
-            <div class="header">
-              <p class="title">فصل مناسب</p>
-            </div>
-            <div class="flex flex-col gap-4 w-full pt-4">
-              <BaseCheckBox label="پاییز" name="test" />
-              <BaseCheckBox label="زمستان" name="test" />
-            </div>
-          </div> -->
-          <div class="card">
-            <div class="header">
-              <p class="title">محدوده قیمت</p>
-            </div>
-            <div class="flex flex-col gap-4 w-full pt-4">
-              <BaseRangeSlider style="width: 100%" :min="0" :max="10000000" :step="10000" v-model="priceData" />
-              <div class="flex justify-between gap-3">
-                <div class="flex gap-2 items-center">
-                  <p>از</p>
-                  <BaseSplitNumberInput v-model="start" name="from" />
-                </div>
-                <div class="flex gap-2 items-center">
-                  <p>تا</p>
-                  <BaseSplitNumberInput v-model="end" name="to" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </aside>
-        <section class="content  w-[75%] md:w-[65%] sm:!w-full">
+        <section class="content  w-full">
           <div class="card sm:hidden md:flex-wrap flex items-center !py-4 justify-between gap-3">
             <div class="flex   tabs items-center gap-4">
               <p class="text-muted">مرتب‌سازی بر اساس:</p>
@@ -72,17 +29,14 @@
               </label>
             </div>
           </div>
-          <div class="mt-2 flex flex-wrap justify-between">
+          <div class="mt-2 flex flex-wrap ">
             <div class="p-2" :class="[
-              { 'w-1/2 md:w-full': showType == 2 },
-              { 'w-1/4 md:w-1/3 sm:!w-1/2': showType == 1 }
+              { 'w-1/3 md:w-full': showType == 2 },
+              { 'w-1/5 md:w-1/4 sm:!w-1/2': showType == 1 }
             ]" v-for="item in products">
               <ProductCard :item="item" :class="{ 'horizontal': showType == 2 }" />
             </div>
 
-          </div>
-          <div class="w-full flex justify-center items-center">
-            <BaseButton>مشاهده بیشتر ...</BaseButton>
           </div>
           <!-- <BasePagination :filter-result="{
             startPage: 18,

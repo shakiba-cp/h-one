@@ -1,7 +1,7 @@
 <template>
   <div class="bg-gray dark:bg-cardBg py-4 mb-4">
     <nav class="container flex gap-3">
-      <nuxt-link to="/">فروشگاه آی‌بولک</nuxt-link>
+      <nuxt-link to="/">فروشگاه <span style="font-family: Arial, Helvetica, sans-serif;">h1</span></nuxt-link>
       <template v-for="item in items">
         <IconsArrow color="var(--color-muted)" />
         <nuxt-link v-if="item.to" :to="item.to">{{ item.title }}</nuxt-link>

@@ -28,7 +28,7 @@
 
         </div>
         <nuxt-link to="/">
-          <img src="/images/ibolak-logo.svg" class="h-12" alt="آی‌بولک" />
+          <img  src="/logo.png" class="h-12" alt="h1 mod" />
         </nuxt-link>
       </div>
       <nav class="flex justify-between items-stretch">
@@ -43,12 +43,12 @@
               </nuxt-link>
               <ul v-if="category.subcategories && category.subcategories.length > 0" class="absolute z-[200] top-6
                 border border-borderColor 
-                duration-200 group-hover:transition-all hidden group-hover:flex bg-cardBg rounded-b">
+                duration-200 group-hover:transition-all hidden group-hover:flex flex-wrap bg-cardBg rounded-b">
                 <li v-for="(child, childIndex) in category.subcategories" :key="child.id" :class="{
                   'border-l border-borderColor': childIndex != category.subcategories.length - 1,
-                }" class="px-5 min-w-60 py-5 text-nowrap w-1/3">
-                  <div class="mb-3">
-                    <nuxt-link :to="`/products/${child.id}`" class="font-bold mb-5">
+                }" class="px-5 min-w-60 py-3 text-nowrap w-1/3">
+                  <div class="">
+                    <nuxt-link :to="`/products/${child.id}`" >
                       {{ child.name }}
                     </nuxt-link>
                   </div>
@@ -67,8 +67,8 @@
         </div>
         <div class="flex gap-2 items-center ">
           <TheDarkModeSwicher />
-          <BaseButton color="secondary">
-            اینستاگرام آی‌بولک
+          <BaseButton to="https://www.instagram.com/h_one_mod" target="_blank" color="secondary">
+            اینستاگرام <span style="font-family: Arial, Helvetica, sans-serif;">H1 mod</span>
             <template #icon>
 
               <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -90,7 +90,7 @@
         <IconsChevron position="right" width="16" height="16" />
         <p class="title">{{ $route.meta.title }}</p>
       </button>
-      <img src="/images/ibolak-logo.svg" />
+      <img src="/logo.png" alt="logo" />
     </div>
   </header>
 </template>

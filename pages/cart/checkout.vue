@@ -88,6 +88,10 @@
 <script lang="ts" setup>
 import type { Discountcode } from '~/models/DiscountCode';
 
+definePageMeta({
+  title: "تکمیل سفارش"
+});
+
 const addressId = ref(0);
 const utilStore = useUtilStore();
 const discountCode = ref('');

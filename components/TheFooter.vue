@@ -21,7 +21,6 @@
             </div>
           </div>
         </div>
-        <!-- Right Column -->
         <div class="col-span-5 sm:col-span-12">
           <div class="footer-widget flex flex-col gap-3">
             <p class="font-bold text-h5">{{ storeInfo.title }}</p>
@@ -47,33 +46,18 @@
     <div class="copyright">
       <div class="container">
         <p class="m-0">
-          کلیه حقوق متعلق به سایت آی‌بولک می‌باشد. | طراحی و توسعه:
-          <a target="_blank" href="https://tookan.tech">توکان تک</a>
+          کلیه حقوق متعلق به سایت <b style="font-family: Arial, Helvetica, sans-serif;">h1 mod</b> می‌باشد.
         </p>
       </div>
     </div>
   </footer>
 </template>
 
-<script setup>
-import { ref } from "vue";
-// Import data from DATABASE.json
+<script setup lang="ts">
 import footerData from "@/assets/DATABASE.json";
 
-// Sections data
 const footerSections = ref(footerData.footer.footerSections);
-
-// Store info
 const storeInfo = ref(footerData.footer.storeInfo);
-
-// Helper for opening Samandehi logo in a new popup
-const openSamandehiLogo = () => {
-  window.open(
-    "https://logo.samandehi.ir/Verify.aspx?id=211878&p=uiwkrfthrfthmcsijyoemcsi",
-    "Popup",
-    "toolbar=no, scrollbars=no, location=no, statusbar=no, menubar=no, resizable=0, width=450, height=630, top=30"
-  );
-};
 </script>
 
 <style scoped>

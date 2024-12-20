@@ -8,13 +8,13 @@
          با توجه به تفاوت رنگ در صفحه نمایش و واقعیت، ممکن است رنگ محصولات تا ۲۰٪ متغیر باشد
       </BaseAlert>
       <TheBreadcrumb class="sm:hidden" :items="[{
-         title: 'زنانه',
-         to: '/products/women'
+         title: product.categories[0].name,
+         to: `/products/` + product.categories[0].id
       },
       {
          title: title
       }]" />
-      <ProductSizeTable v-model="isOpenSizeModal" :data="product.sizingTable"/>
+      <ProductSizeTable v-model="isOpenSizeModal" :data="product.sizingTable" />
 
       <div class="container">
          <div class="card flex sm:flex-col justify-between gap-6">
@@ -144,6 +144,7 @@ const selectedColor: Ref<ProductColor | null> = ref(product.colors[0]);
 const size = Object.keys(selectedColor.value?.color_sizes ?? {})[0];
 const selectedSize = ref(size)
 const utilStore = useUtilStore();
+const authStore = useAuthStore();
 
 const totalPrice = computed(() => {
    var price = Number(product.price);
@@ -154,7 +155,12 @@ const totalPrice = computed(() => {
    return (price - discount).toLocaleString();
 });
 const addToShopCart = async () => {
+
    if (selectedSize.value) {
+      if (authStore.isLogin == false) {
+         authStore.openLoginModal(addToShopCart);
+         return;
+      }
       //@ts-ignore
       var res = await AddToCart(selectedColor.value?.color_sizes[selectedSize.value]);
       if (res.isSuccess) {

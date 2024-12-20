@@ -43,20 +43,22 @@ const validate = async () => {
   if (res.isSuccess) {
     authStore.changeStep('code');
   }
-  loading.value=false;
+  loading.value = false;
 }
 const login = async () => {
-  loading.value=true;
+  loading.value = true;
   var res = await CheckOtp(authStore.phoneNumber, otp.value);
   if (res.isSuccess) {
     toast.showToast("ورود با موفقیت انجام شد");
-    authStore.setToken(res.data);
+    var isReturnPanel = authStore.setToken(res.data);
     authStore.isOpenModal = false;
-    router.push('/panel');
-  }else{
-    toast.showToast("کد نامعتبر است",ToastType.error)
+    if (isReturnPanel) {
+      router.push('/panel');
+    }
+  } else {
+    toast.showToast("کد نامعتبر است", ToastType.error)
   }
-  loading.value=false;
+  loading.value = false;
 
 }
 </script>

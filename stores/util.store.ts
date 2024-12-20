@@ -1,4 +1,5 @@
 import type { Category } from "~/models/Category";
+import type { Order } from "~/models/Order";
 import type { ShopCartItem } from "~/models/ShopCartItem";
 import { GetCurrentShopingCart } from "~/services/shopCart.service";
 
@@ -6,6 +7,8 @@ export const useUtilStore = defineStore("util", () => {
   const categories: Ref<Category[]> = ref([]);
   const shopCartItems: Ref<ShopCartItem[]> = ref([]);
   const shopCartLoading = ref(true);
+  const orders: Ref<Order[]> = ref([]);
+  
   const initCategories = async () => {
     if (categories.value.length == 0) {
       var res = await CustomFetch<Category[]>("/shop/categories");
@@ -44,6 +47,7 @@ export const useUtilStore = defineStore("util", () => {
     getShopCartDiscount,
     shopCartLoading,
     updateShopCartItems,
-    removeShopCartItem
+    removeShopCartItem,
+    orders,
   };
 });

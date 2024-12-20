@@ -21,27 +21,27 @@ export const useAuthStore = defineStore("auth", () => {
     var cookie = getAccessToken();
     return cookie != null && cookie != "";
   });
-  const setToken = (token: string) => {
+  const setToken = (token: string): boolean => {
     var cookie = useCookie("s-access-token", {
       expires: new Date(new Date().setDate(new Date().getDate() + 30)),
     });
     cookie.value = token;
-    setTimeout(() => {
-      if (
-        callBackFunctionAfterLogin.value != null &&
-        callBackFunctionAfterLogin.value != undefined
-      ) {
+    if (
+      callBackFunctionAfterLogin.value != null &&
+      callBackFunctionAfterLogin.value != undefined
+    ) {
+      setTimeout(() => {
         callBackFunctionAfterLogin.value!();
-      }
-    }, 300);
+      }, 300);
+      return false;
+    } else {
+      return true;
+    }
   };
   const logOut = async () => {
-    //  var res = await LogoutUser();
-    //  if (res.isSuccess) {
-    //    var cookie = useCookie("s-access-token");
-    //    cookie.value = null;
-    //    location.reload();
-    //  }
+    var cookie = useCookie("s-access-token");
+    cookie.value = null;
+    userData.value = null;
   };
   const changeStep = (step: "phoneNumber" | "code") => {
     currentStep.value = step;
@@ -52,12 +52,14 @@ export const useAuthStore = defineStore("auth", () => {
     callBackFunctionAfterLogin.value = fn;
   };
   const setCurrentUser = async () => {
-    dataLoading.value = true;
-    var res = await GetCurrentUser();
-    if (res.isSuccess) {
-      userData.value = res.data as any;
+    if (isLogin.value) {
+      dataLoading.value = true;
+      var res = await GetCurrentUser();
+      if (res.isSuccess) {
+        userData.value = res.data as any;
+      }
+      dataLoading.value = false;
     }
-    dataLoading.value = false;
   };
   return {
     isOpenModal,

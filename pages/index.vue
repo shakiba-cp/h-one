@@ -24,13 +24,8 @@
 </template>
 
 <script lang="ts" setup>
-import DATABASE from "@/assets/DATABASE.json";
 import type { HomePageDto } from "~/models/HomePageDto";
 
-const products = DATABASE["products"] as [];
-const stories = DATABASE["stories"] as [];
-const banners = DATABASE["banners"] as [];
-const blogs = DATABASE["blogs"] as [];
 const { data } = await useAsyncData("home", () => CustomFetch<HomePageDto>("/shop/main-page"));
 definePageMeta({
   title: "صفحه اصلی"
