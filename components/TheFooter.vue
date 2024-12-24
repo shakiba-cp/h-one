@@ -43,7 +43,7 @@
         </div>
       </div>
     </div>
-    <div class="copyright">
+    <div class="copyright sm:hidden">
       <div class="container">
         <p class="m-0">
           کلیه حقوق متعلق به سایت <b style="font-family: Arial, Helvetica, sans-serif;">h1 mod</b> می‌باشد.

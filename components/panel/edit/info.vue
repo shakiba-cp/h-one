@@ -1,15 +1,13 @@
 <template>
-  <Form v-slot="{meta}" :validation-schema="validationSchema" @submit="onSubmit" class="grid grid-cols-2 gap-5"
+  <Form v-slot="{ meta }" :validation-schema="validationSchema" @submit="onSubmit" class="grid grid-cols-2 gap-5"
     :class="{ 'card-loading': loading }">
-    <BaseInput name="fullName" 
-    label="نام و نام خانوادگی (فارسی) " v-model="fullName"
-    :value="fullName"
+    <BaseInput  class="sm:col-span-2" name="fullName" label="نام و نام خانوادگی (فارسی) " v-model="fullName" :value="fullName"
       placeholder="نام  خود را وارد نمایید...">
       <template #icon>
         <IconsUser />
       </template>
     </BaseInput>
-    <BaseInput disabled :value="authStore.userData?.phone" placeholder="شماره تلفن همراه خود را وارد کنید"
+    <BaseInput class="sm:col-span-2" disabled :value="authStore.userData?.phone" placeholder="شماره تلفن همراه خود را وارد کنید"
       name="phoneNumber" label="شماره تلفن همراه ">
       <template #icon>
         <IconsPhone />

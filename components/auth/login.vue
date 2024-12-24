@@ -13,7 +13,7 @@
       </Form>
       <div class="flex flex-col gap-2" v-else :class="{ 'card-loading': loading }">
         <p>کد تایید :</p>
-        <BaseStepInput v-model="otp" :length="4" />
+        <BaseStepInput v-model="otp" :length="4" @completed="login" />
         <BaseButton :loading="loading" @click="login" class="w-full mt-2">ثبت و ورود به سایت</BaseButton>
         <BaseButton @click="authStore.changeStep('phoneNumber')" color="info" outline class="w-full">ویرایش شماره
         </BaseButton>
