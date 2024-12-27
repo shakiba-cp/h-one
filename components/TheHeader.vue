@@ -21,7 +21,7 @@
           </BaseButton>
 
           <form @submit.prevent="searchProduct">
-            <BaseInput name="search" v-model=search inputClass="min-w-[350px]" placeholder="جستجو...">
+            <BaseInput name="search" v-model=search inputClass="min-w-[350px] md:min-w-[300px]" placeholder="جستجو...">
               <template #icon>
                 <IconsSearch />
               </template>
@@ -33,7 +33,7 @@
           <ClientOnly>
             <TheDarkModeSwicher />
           </ClientOnly>
-          <BaseButton to="https://www.instagram.com/h_one_mod" target="_blank" color="secondary">
+          <BaseButton class="md:!hidden" to="https://www.instagram.com/h_one_mod" target="_blank" color="secondary">
             اینستاگرام <span style="font-family: Arial, Helvetica, sans-serif;">H1 mod</span>
             <template #icon>
 
