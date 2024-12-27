@@ -4,9 +4,9 @@
       class="absolute top-5 left-0 rounded-r-full text-white bg-primary z-10 py-1 px-3">{{ item.off_percent }}
       درصد</label>
     <div class="product-image">
-      <base-img width="250px" height="400px" fit="contain" :src="`shop/${item.images[0].source}`"
-        :alt="item.images[0].title" />
-      <div class="product-image-gallery">
+      <base-img width="250px" height="400px" fit="contain" :src="`shop/${item.images[0]?.source}`"
+        :alt="item.images[0]?.title" />
+      <div class="product-image-gallery" v-if="item.images.length>1">
         <div class="product-image-gallery-item" v-for="(image, i) in [...item.images].splice(1)" :key="i">
           <BaseImg width="80px" :src="`shop/${image.source}`" :alt="image.title" />
         </div>
