@@ -34,6 +34,7 @@ export const useAuthStore = defineStore("auth", () => {
     ) {
       setTimeout(() => {
         callBackFunctionAfterLogin.value!();
+        isOpenModal.value=false
       }, 300);
       return false;
     } else {

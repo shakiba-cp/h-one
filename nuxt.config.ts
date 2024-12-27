@@ -43,7 +43,7 @@ export default defineNuxtConfig({
   },
   image: {
     quality: 100,
-    domains: ["https://run.khaliliexport.ir"],
-    alias: { shop: "https://run.khaliliexport.ir" },
+    domains: ["https://back.h1mod.ir"],
+    alias: { shop: "https://back.h1mod.ir" },
   },
 });

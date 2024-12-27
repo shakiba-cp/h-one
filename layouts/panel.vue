@@ -29,13 +29,6 @@
 const router = useRouter();
 const breadcrumb = ref([]);
 const authStore = useAuthStore();
-watch(router.currentRoute, (newValue) => {
-
-});
-
-onBeforeMount(() => {
-});
-
 </script>
 
 <style></style>

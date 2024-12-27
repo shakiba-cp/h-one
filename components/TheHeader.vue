@@ -136,8 +136,8 @@ onMounted(() => {
 const checkBack = () => {
   const referrer = document.referrer;
   const currentDomain = window.location.origin;
- // بررسی وجود تاریخچه مناسب یا بازگشت از صفحات داخلی سایت
- if (window.history.state?.back || (referrer && referrer.startsWith(currentDomain))) {
+  // بررسی وجود تاریخچه مناسب یا بازگشت از صفحات داخلی سایت
+  if (window.history.state?.back || (referrer && referrer.startsWith(currentDomain))) {
     canGoBack.value = true;
   } else {
     canGoBack.value = false;

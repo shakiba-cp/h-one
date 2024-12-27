@@ -51,9 +51,11 @@ const login = async () => {
   if (res.isSuccess) {
     toast.showToast("ورود با موفقیت انجام شد");
     var isReturnPanel = authStore.setToken(res.data);
-    authStore.isOpenModal = false;
     if (isReturnPanel) {
       router.push('/panel');
+      setTimeout(() => {
+        authStore.isOpenModal = false;
+      }, 200);
     }
   } else {
     toast.showToast("کد نامعتبر است", ToastType.error)
