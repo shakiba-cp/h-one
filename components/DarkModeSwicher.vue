@@ -1,15 +1,15 @@
 <template>
   <div>
-    <input type="checkbox" class="checkbox" id="themCheck">
-    <label for="themCheck" class="checkbox-label">
+    <input type="checkbox" class="checkbox" :id="id">
+    <label :for="id" class="checkbox-label">
       <IconsMoon />
       <IconsSun />
       <span class="ball"></span>
     </label>
-  </div> 
+  </div>
 </template>
 <script setup lang="ts">
-
+const id = useId();
 const color = useColorMode();
 const toggleColor = () => {
   try {
@@ -23,10 +23,10 @@ const toggleColor = () => {
   }
 }
 onMounted(() => {
-  const checkbox = document.getElementById("themCheck");
+  const checkbox = document.getElementById(id);
   if (color.value == 'dark') {
     //@ts-ignore
-    document.getElementById("themCheck").checked = true;
+    document.getElementById(id).checked = true;
   }
   checkbox!.addEventListener("change", () => {
     toggleColor()
@@ -36,7 +36,7 @@ onMounted(() => {
 <style scoped lang="scss">
 .checkbox {
   opacity: 0;
-  position: absolute; 
+  position: absolute;
   width: 5px;
 }
 

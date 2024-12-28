@@ -87,9 +87,7 @@
             </li>
           </ul>
         </div>
-        <div class="flex gap-2 items-center ">
 
-        </div>
       </nav>
     </div>
     <div class="hidden items-center sm:flex justify-between w-full">
@@ -99,7 +97,12 @@
         </button>
         <p class="title">{{ $route.meta.title }}</p>
       </div>
-      <img src="/logo.png" alt="logo" />
+      <div class="flex gap-2 items-center">
+        <ClientOnly>
+          <DarkModeSwicher />
+        </ClientOnly>
+        <img src="/logo.png" alt="logo" />
+      </div>
     </div>
   </header>
 </template>
@@ -167,7 +170,7 @@ const searchProduct = () => {
     @apply justify-between flex px-5 pb-5 pt-4 border-b shadow-sm;
 
     .title {
-      @apply text-black text-h5;
+      @apply text-black dark:text-white text-h5;
     }
   }
 }

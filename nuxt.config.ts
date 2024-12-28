@@ -24,6 +24,11 @@ export default defineNuxtConfig({
       mode: "out-in",
     },
     head: {
+      link: [
+        { rel: "shortcut icon", href: "/logo.png" },
+        { rel: "icon", href: "/logo.png" },
+        { rel: "apple-touch-icon", href: "/images/logo.png" },
+      ],
       htmlAttrs: {
         dir: "rtl",
       },

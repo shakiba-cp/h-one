@@ -1,27 +1,27 @@
 <template>
   <div>
-    <div class="fixed  z-[999] shadow justify-between w-full right-0 bottom-0 hidden sm:flex gap-2
+    <div class="fixed dark:border-t border-borderColor z-[999] shadow justify-between w-full right-0 bottom-0 hidden sm:flex gap-2
    bg-cardBg pb-2 pt-4 px-6">
       <NuxtLink to="/" active-class="active">
-        <IconsHome color="black" width="24" height="24" />
+        <IconsHome class="text-black dark:text-muted" width="24" height="24" />
         خانه
       </NuxtLink>
       <button  @click="isOpenModal = true">
-        <IconsRows color="black" width="24" height="24" />
+        <IconsRows class="text-black dark:text-muted" width="24" height="24" />
         دسته‌بندی‌ها
       </button>
       <button @click="isSearchModal = true">
-        <IconsSearch color="black" />
+        <IconsSearch class="text-black dark:text-muted"/>
         جستجو
       </button>
       <NuxtLink to="/cart" active-class="active">
         <span v-if="utilStore.shopCartItems.length > 0" class="absolute -top-1 left-1 text-h8 rounded-full flex items-center justify-center 
       w-[20px] h-[20px] !bg-primary text-white">{{ utilStore.shopCartItems.length }}</span>
-        <IconsBasket color="black" />
+        <IconsBasket class="text-black dark:text-muted" />
         سبد خرید
       </NuxtLink>
       <NuxtLink to="/panel" active-class="active">
-        <IconsUser color="black" />
+        <IconsUser class="text-black dark:text-muted" />
         پروفایل
       </NuxtLink>
     </div>
