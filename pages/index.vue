@@ -1,7 +1,7 @@
 <template>
   <div class="container max-w-[95%] mx-auto space-y-[1.5rem]">
     <HomeStories v-if="(data?.data.stories.length??0)>0" :data="data?.data.stories ?? []" />
-    <BaseCarousel class="single-slider rounded" :autoplay="{
+    <BaseCarousel class="single-slider my-5 rounded" :autoplay="{
       delay: 2000,
       pauseOnMouseEnter: true
     }" :items-to-show="1" :items="data?.data.slidersData ?? []" :modules="[SwiperNavigation, SwiperAutoplay]"
@@ -10,7 +10,7 @@
       }">
       <template #item="{ item }">
         <BaseImg :src="`shop/${item.source}`" :alt="item.title"
-          class="rounded sm:h-[170px] h-[350px] object-cover w-full" />
+          class="rounded   w-full" />
       </template>
     </BaseCarousel>
 

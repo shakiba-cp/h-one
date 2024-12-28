@@ -31,7 +31,7 @@
         </div>
         <div class="flex gap-2 items-center">
           <ClientOnly>
-            <TheDarkModeSwicher />
+            <DarkModeSwicher />
           </ClientOnly>
           <BaseButton class="md:!hidden" to="https://www.instagram.com/h_one_mod" target="_blank" color="secondary">
             اینستاگرام <span style="font-family: Arial, Helvetica, sans-serif;">H1 mod</span>
@@ -105,6 +105,8 @@
 </template>
 
 <script setup lang="ts">
+import type DarkModeSwicher from './DarkModeSwicher.vue';
+
 
 const router = useRouter();
 const SearchState = ref(false);
