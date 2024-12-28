@@ -10,9 +10,9 @@
     <BaseModal size="sm" header-class="!pt-6" :title="selectedStory?.title" v-model="isOpenModal">
       <video controls v-if="selectedStory?.content.endsWith('.mp4')" :src="BASE_IMAGE_URL + selectedStory?.content"
         class="w-full" />
-      <BaseImg v-else :src="`shop/${selectedStory!.content}`" 
+      <img v-else :src="`${BASE_IMAGE_URL}/${selectedStory!.content}`" 
       class="rounded w-full border border-borderColor" 
-        :alt="selectedStory!.title" />
+        :alt="selectedStory!.title"/>
       <p v-if="selectedStory?.description" v-html="selectedStory!.description" class="mt-2"></p>
       <BaseButton class="w-full mt-2" :to="selectedStory!.link">مشاهده</BaseButton>
     </BaseModal>
